@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { loginUser } from '../redux/loginSlice';
 
 function Login() {
@@ -31,14 +31,13 @@ function Login() {
     <div>
       <p>
         Login
-        {status}
       </p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email:
           <input
             className="form-input"
-            type="text"
+            type="email"
             name="email"
             placeholder="joe@mail.com"
             value={userData.email}
@@ -62,6 +61,10 @@ function Login() {
         </label>
         <button type="submit">Login</button>
       </form>
+      <p>
+        Don&apos;t have an account?
+        <NavLink to="/signup">Sign Up</NavLink>
+      </p>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import Personnel from './components/personnel';
 import './App.css';
 import Topbar from './components/topbar';
 import Login from './auth/login';
+import Signup from './auth/signup';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/certificates" element={<Certificates />} />
               <Route path="/personnel" element={<Personnel />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </div>
         </div>
