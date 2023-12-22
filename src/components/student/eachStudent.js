@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function EachStudent({ eachStudent }) {
-  console.log(eachStudent);
+function EachStudent({ eachStudent, handleSelectedStudents }) {
+  const isChecked = () => {
+    handleSelectedStudents(eachStudent.id);
+  };
+
   return (
     <div>
-      <header>
-        <p>ID</p>
-        <p>Name</p>
-        <p>Cert. No</p>
-      </header>
       <div>
+        <input
+          type="checkbox"
+          onChange={isChecked}
+        />
         <p>{eachStudent.id}</p>
         <p>{eachStudent.name}</p>
         <p>{eachStudent.unique_number}</p>
@@ -25,6 +27,7 @@ EachStudent.propTypes = {
     name: PropTypes.string.isRequired,
     unique_number: PropTypes.string.isRequired, // Make it optional if needed
   }).isRequired,
+  handleSelectedStudents: PropTypes.func.isRequired,
 };
 
 export default EachStudent;

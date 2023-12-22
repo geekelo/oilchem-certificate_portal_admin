@@ -23,7 +23,6 @@ export const displayStudents = createAsyncThunk('user/display_students', async (
     }
 
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     throw new Error('Something went wrong with creating the user');
@@ -60,7 +59,6 @@ export const addStudent = createAsyncThunk(
   'user/addStudent',
   async (payload, dispatch) => {
     const { studentData, token } = payload;
-    console.log(studentData);
     try {
       const response = await fetch('http://localhost:2000/api/v1/students', {
         method: 'POST',

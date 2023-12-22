@@ -61,31 +61,28 @@ export const addPersonnel = createAsyncThunk(
   },
 );
 
-export const deleteReservation = createAsyncThunk(
-  'items/deleteItem',
-  async (payload, dispatch) => {
+export const deletePersonnel = createAsyncThunk(
+  'personnel/deletePersonnel',
+  async (payload) => {
     const { id, token } = payload;
 
     try {
-      const response = await fetch(`http://localhost:30001/api/v1/reservations/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          // Include any necessary headers, such as authentication headers
+      const response = await fetch(
+        `http://localhost:2000/api/v1/trainingpersonnels/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-
-      // If the request is successful, you may dispatch another action to update the Redux store
-      // with the new state after deletion
-
-      dispatch(displayPersonnel(token)); // Return the deleted item ID if needed
     } catch (error) {
-      throw new Error('Something went wrong with deleting the item');
+      throw new Error('Something went wrong with deleting the student');
     }
   },
 );

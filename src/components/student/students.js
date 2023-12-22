@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { displayStudents } from '../../redux/studentSlice';
+import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
 
 function Students() {
@@ -9,6 +9,7 @@ function Students() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.display_students.value);
   const [token, setToken] = useState('');
+  const [selectedStudents, setSelectedStudents] = useState([]);
 
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
@@ -19,13 +20,20 @@ function Students() {
         navigate('/login');
       } else {
         const tokenData = parsedData.extractedUserData.token;
-        console.log(tokenData);
         setToken(tokenData);
-        console.log(tokenData); // Corrected console.log
       }
     } else {
       navigate('/login');
     }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await Promise.all(
+      selectedStudents.map((each) => dispatch(deleteStudent({ id: each, token }))),
+    );
+
+    await dispatch(displayStudents(token));
   };
 
   useEffect(() => {
@@ -33,28 +41,51 @@ function Students() {
     dispatch(displayStudents(token));
   }, [token]);
 
+  const handleSelectedStudents = (param) => {
+    if (selectedStudents.includes(param)) {
+      setSelectedStudents((selectedStudents) => {
+        const updatedStudents = selectedStudents.filter((student) => student !== param);
+        return updatedStudents;
+      });
+    } else {
+      setSelectedStudents([...selectedStudents, param]);
+    }
+  };
+
+  console.log(students);
+
   if (students.length > 0) {
-    console.log(students);
     return (
       <div>
         <div>
           <NavLink to="/addstudent">Add </NavLink>
-          <NavLink>Delete</NavLink>
+          <button type="submit" onClick={handleDelete}>Delete</button>
         </div>
         <div>
+          <p>ID</p>
+          <p>Name</p>
+          <p>Cert. No</p>
+        </div>
+        <form>
           {
             [...students]
               .sort((a, b) => b.id - a.id)
-              .map((each) => <EachStudent key={each.id} eachStudent={each} />)
+              .map((each) => (
+                <EachStudent
+                  key={each.id}
+                  eachStudent={each}
+                  handleSelectedStudents={handleSelectedStudents}
+                />
+              ))
           }
-        </div>
+        </form>
       </div>
     );
   }
 
   return (
     <div>
-      <p>Loading...</p>
+      <p>No student to display yet. Loading...</p>
     </div>
   ); // Return null if students.length <= 0
 }
