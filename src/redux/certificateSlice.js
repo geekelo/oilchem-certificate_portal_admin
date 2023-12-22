@@ -8,11 +8,11 @@ const initialState = {
   error: 'no errors yet',
 };
 
-export const displayPersonnel = createAsyncThunk(
+export const displayCertificates = createAsyncThunk(
   'user/display_personnel',
   async (token) => {
     try {
-      const response = await fetch('http://localhost:2000/api/v1/trainingpersonnels', {
+      const response = await fetch('http://localhost:2000/api/v1/certificates', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -25,35 +25,6 @@ export const displayPersonnel = createAsyncThunk(
       }
 
       const data = await response.json();
-      return data;
-    } catch (error) {
-      throw new Error('Something went wrong with creating the user');
-    }
-  },
-);
-
-export const addPersonnel = createAsyncThunk(
-  'user/addPersonnel',
-  async (payload, dispatch) => {
-    console.log(payload);
-    const { personnelData, token } = payload;
-    console.log(personnelData);
-    try {
-      const response = await fetch('http://localhost:2000/api/v1/trainingpersonnels', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ trainingpersonnel: personnelData }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      dispatch(displayPersonnel);
       return data;
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
@@ -83,32 +54,32 @@ export const deleteReservation = createAsyncThunk(
       // If the request is successful, you may dispatch another action to update the Redux store
       // with the new state after deletion
 
-      dispatch(displayPersonnel(token)); // Return the deleted item ID if needed
+      dispatch(displayCertificates(token)); // Return the deleted item ID if needed
     } catch (error) {
       throw new Error('Something went wrong with deleting the item');
     }
   },
 );
 
-const personnelSlice = createSlice({
+const certificatesSlice = createSlice({
   name: 'display_personnel',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(displayPersonnel.pending, (state) => ({
+      .addCase(displayCertificates.pending, (state) => ({
         ...state,
         loggedin: 'false',
         status: 'loading',
       }))
-      .addCase(displayPersonnel.fulfilled, (state, action) => ({
+      .addCase(displayCertificates.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         value: action.payload,
         status: 'done',
       }))
-      .addCase(displayPersonnel.rejected, (state, action) => ({
+      .addCase(displayCertificates.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',
@@ -117,4 +88,4 @@ const personnelSlice = createSlice({
   },
 });
 
-export default personnelSlice.reducer;
+export default certificatesSlice.reducer;

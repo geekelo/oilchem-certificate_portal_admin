@@ -25,7 +25,6 @@ export const loginUser = createAsyncThunk(
       }
 
       const data = await response.json();
-      
       const extractedUserData = {
         id: data.admin.id,
         email: data.admin.email,
