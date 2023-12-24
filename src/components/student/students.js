@@ -52,8 +52,6 @@ function Students() {
     }
   };
 
-  console.log(students);
-
   if (students.length > 0) {
     return (
       <div>
@@ -85,6 +83,10 @@ function Students() {
 
   return (
     <div>
+      <div>
+        <NavLink to="/addstudent">Add </NavLink>
+        <button type="submit" onClick={handleDelete}>Delete</button>
+      </div>
       <p>No student to display yet. Loading...</p>
     </div>
   ); // Return null if students.length <= 0

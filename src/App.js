@@ -15,6 +15,7 @@ import Login from './auth/login';
 import Signup from './auth/signup';
 import AddPersonnel from './components/personnel/addPersonnel';
 import AddStudent from './components/student/addStudent';
+import AddCertificate from './components/certificate/addCertificate';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/addpersonnel" element={<AddPersonnel />} />
               <Route path="/addstudent" element={<AddStudent />} />
+              <Route path="/addcertificate/:id" element={<AddCertificate />} />
             </Routes>
           </div>
         </div>

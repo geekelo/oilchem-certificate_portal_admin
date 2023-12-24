@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 function EachStudent({ eachStudent, handleSelectedStudents }) {
   const isChecked = () => {
@@ -16,6 +17,7 @@ function EachStudent({ eachStudent, handleSelectedStudents }) {
         <p>{eachStudent.id}</p>
         <p>{eachStudent.name}</p>
         <p>{eachStudent.unique_number}</p>
+        <NavLink to={`/addcertificate/${eachStudent.id}`}>Add </NavLink>
       </div>
     </div>
   );
