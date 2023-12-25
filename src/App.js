@@ -16,6 +16,7 @@ import Signup from './auth/signup';
 import AddPersonnel from './components/personnel/addPersonnel';
 import AddStudent from './components/student/addStudent';
 import AddCertificate from './components/certificate/addCertificate';
+import AddBatch from './components/batch/addBatch';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/addpersonnel" element={<AddPersonnel />} />
               <Route path="/addstudent" element={<AddStudent />} />
               <Route path="/addcertificate/:id" element={<AddCertificate />} />
+              <Route path="/addbatch" element={<AddBatch />} />
             </Routes>
           </div>
         </div>

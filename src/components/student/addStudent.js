@@ -40,7 +40,7 @@ function AddStudent() {
           Name:
           <input
             className="form-input"
-            type="name"
+            type="text"
             name="name"
             placeholder="joe"
             value={studentData.name}
