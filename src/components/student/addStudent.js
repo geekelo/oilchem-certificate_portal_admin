@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { addStudent } from '../../redux/studentSlice';
 
@@ -7,10 +8,13 @@ function AddStudent() {
   const dispatch = useDispatch();
   const studentID = uuidv4();
   const truncatedId = studentID.substring(0, 11);
+  const location = useLocation();
+  const batchId = location.pathname.split('/').pop();
 
   const [studentData, setstudentData] = useState({
     name: '',
     unique_number: truncatedId,
+    batch_id: batchId,
   });
 
   const handleSubmit = async (e) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
 
@@ -10,6 +10,8 @@ function Students() {
   const students = useSelector((state) => state.display_students.value);
   const [token, setToken] = useState('');
   const [selectedStudents, setSelectedStudents] = useState([]);
+  const location = useLocation();
+  const batchId = location.pathname.split('/').pop();
 
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
@@ -52,11 +54,12 @@ function Students() {
     }
   };
 
-  if (students.length > 0) {
+  const batchStudents = students.filter((each) => each.batch_id === Number(batchId));
+  if (batchStudents.length > 0) {
     return (
       <div>
         <div>
-          <NavLink to="/addstudent">Add </NavLink>
+          <NavLink to={`/addstudent/${batchId}`}>Add </NavLink>
           <button type="submit" onClick={handleDelete}>Delete</button>
         </div>
         <div>
@@ -66,7 +69,7 @@ function Students() {
         </div>
         <form>
           {
-            [...students]
+            [...batchStudents]
               .sort((a, b) => b.id - a.id)
               .map((each) => (
                 <EachStudent
@@ -84,7 +87,7 @@ function Students() {
   return (
     <div>
       <div>
-        <NavLink to="/addstudent">Add </NavLink>
+        <NavLink to={`/addstudent/${batchId}`}>Add </NavLink>
         <button type="submit" onClick={handleDelete}>Delete</button>
       </div>
       <p>No student to display yet. Loading...</p>

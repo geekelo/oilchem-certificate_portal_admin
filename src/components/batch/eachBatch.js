@@ -18,7 +18,7 @@ function EachBatch({ eachBatch, handleSelectedBatches }) {
         <p>{eachBatch.name}</p>
         <p>{eachBatch.start_date}</p>
         <p>{eachBatch.end_date}</p>
-        <NavLink to={`/batch/${eachBatch.id}`}>View </NavLink>
+        <NavLink to={`/students/${eachBatch.id}`}>View </NavLink>
       </div>
     </div>
   );

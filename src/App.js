@@ -29,13 +29,13 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/students" element={<Students />} />
+              <Route path="/students/:id" element={<Students />} />
               <Route path="/certificates" element={<Certificates />} />
               <Route path="/personnel" element={<Personnel />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/addpersonnel" element={<AddPersonnel />} />
-              <Route path="/addstudent" element={<AddStudent />} />
+              <Route path="/addstudent/:id" element={<AddStudent />} />
               <Route path="/addcertificate/:id" element={<AddCertificate />} />
               <Route path="/addbatch" element={<AddBatch />} />
             </Routes>
