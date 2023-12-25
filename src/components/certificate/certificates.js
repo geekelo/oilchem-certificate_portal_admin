@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { displayCertificates } from '../../redux/certificateSlice';
+import { deleteCertificate, displayCertificates } from '../../redux/certificateSlice';
 import EachCertificate from './eachCertificate';
 import { displayPersonnel } from '../../redux/personnelSlice';
 import { displayStudents } from '../../redux/studentSlice';
@@ -12,7 +12,7 @@ function Certificates() {
   const certificateData = useSelector((state) => state.display_certificates.value);
   const personnels = useSelector((state) => state.display_personnel.value);
   const students = useSelector((state) => state.display_students.value);
-
+  const [selectedCertificates, setSelectedCertificates] = useState([]);
   const [token, setToken] = useState('');
 
   useEffect(() => {
@@ -47,19 +47,33 @@ function Certificates() {
           throw error;
         });
     };
-
     fetchdata();
   }, [dispatch, token]);
 
-  const handleDelete = () => {
-    console.log('hi');
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await Promise.all(
+      selectedCertificates.map((each) => dispatch(deleteCertificate({ id: each, token }))),
+    );
+    await dispatch(displayCertificates(token));
+  };
+
+  const handleSelectedCertificates = (param) => {
+    if (selectedCertificates.includes(param)) {
+      setSelectedCertificates((selectedCertificates) => {
+        const updatedSelectedCertificates = selectedCertificates.filter((each) => each !== param);
+        return updatedSelectedCertificates;
+      });
+    } else {
+      setSelectedCertificates([...selectedCertificates, param]);
+    }
   };
 
   if (certificateData.length > 0) {
     return (
       <div>
         <div>
-          {/* <button type="submit" onClick={handleDelete}>Delete</button> */}
+          <button type="submit" onClick={handleDelete}>Delete</button>
         </div>
         <header>
           <p>ID</p>
@@ -76,6 +90,7 @@ function Certificates() {
                   eachCertificate={each}
                   students={students}
                   personnels={personnels}
+                  handleSelectedCertificates={handleSelectedCertificates}
                 />
               ))
           }

@@ -5,6 +5,7 @@ function EachCertificate({
   eachCertificate,
   students,
   personnels,
+  handleSelectedCertificates,
 }) {
   const currStudent = students.filter((each) => each.id === eachCertificate.student_id);
   const director = personnels.filter((each) => each.id === eachCertificate.training_director_id);
@@ -13,9 +14,17 @@ function EachCertificate({
   const studentName = currStudent[0].name || '';
   const studentNumber = currStudent[0].unique_number || '';
 
+  const isChecked = () => {
+    handleSelectedCertificates(eachCertificate.id);
+  };
+
   return (
     <div>
       <div>
+        <input
+          type="checkbox"
+          onChange={isChecked}
+        />
         <p>{eachCertificate.id}</p>
         <p>{eachCertificate.name}</p>
         <p>{eachCertificate.title}</p>
@@ -25,8 +34,8 @@ function EachCertificate({
         <p>{studentNumber}</p>
         <p>{eachCertificate.start_date}</p>
         <p>{eachCertificate.end_date}</p>
-        <p>{director[0].name}</p>
-        <p>{director[0].signature}</p>
+        <p>{director[0].name || ''}</p>
+        <p>{director[0].signature || ''}</p>
         <p>{instructor[0].name || ''}</p>
         <p>{instructor[0].signature || ''}</p>
         <p>{facilitator[0].name || ''}</p>
@@ -37,6 +46,7 @@ function EachCertificate({
 }
 
 EachCertificate.propTypes = {
+  handleSelectedCertificates: PropTypes.func.isRequired,
   eachCertificate: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

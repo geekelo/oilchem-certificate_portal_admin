@@ -32,6 +32,33 @@ export const displayCertificates = createAsyncThunk(
   },
 );
 
+export const deleteCertificate = createAsyncThunk(
+  'students/deleteCertificate',
+  async (payload) => {
+    console.log(payload);
+    const { id, token } = payload;
+
+    try {
+      const response = await fetch(
+        `http://localhost:2000/api/v1/certificates/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      throw new Error('Something went wrong with deleting the student');
+    }
+  },
+);
+
 export const addCertificate = createAsyncThunk(
   'certificate/addCertificate',
   async (payload) => {
