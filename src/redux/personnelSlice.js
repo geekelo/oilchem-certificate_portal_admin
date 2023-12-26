@@ -61,6 +61,33 @@ export const addPersonnel = createAsyncThunk(
   },
 );
 
+export const editPersonnel = createAsyncThunk(
+  'user/editPersonnel',
+  async (payload, { dispatch }) => {
+    const { personnelId, updatedPersonnelData, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/trainingpersonnels/${personnelId}`, {
+        method: 'PATCH', // Use PATCH for update/edit requests
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ trainingpersonnel: updatedPersonnelData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      dispatch(displayPersonnel());
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with updating the personnel');
+    }
+  },
+);
+
 export const deletePersonnel = createAsyncThunk(
   'personnel/deletePersonnel',
   async (payload) => {

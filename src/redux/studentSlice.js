@@ -82,6 +82,33 @@ export const addStudent = createAsyncThunk(
   },
 );
 
+export const editStudent = createAsyncThunk(
+  'user/editStudent',
+  async (payload, { dispatch }) => {
+    const { studentId, updatedStudentData, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/students/${studentId}`, {
+        method: 'PATCH', // Use PATCH for update/edit requests
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ student: updatedStudentData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      dispatch(displayStudents());
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with updating the student');
+    }
+  },
+);
+
 const displayStudentsSlice = createSlice({
   name: 'display_students',
   initialState,

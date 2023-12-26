@@ -84,6 +84,32 @@ export const addBatch = createAsyncThunk(
   },
 );
 
+export const editBatch = createAsyncThunk(
+  'certificate/editBatch',
+  async (payload) => {
+    const { batchId, updatedBatchData, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/batches/${batchId}`, {
+        method: 'PATCH', // Use PATCH for update/edit requests
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ batch: updatedBatchData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with updating the batch');
+    }
+  },
+);
+
 const batchSlice = createSlice({
   name: 'display_batches',
   initialState,

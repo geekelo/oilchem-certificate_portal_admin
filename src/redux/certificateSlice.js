@@ -85,6 +85,32 @@ export const addCertificate = createAsyncThunk(
   },
 );
 
+export const editCertificate = createAsyncThunk(
+  'certificate/editCertificate',
+  async (payload) => {
+    const { certificateId, updatedCertificateData, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/certificates/${certificateId}`, {
+        method: 'PATCH', // Use PATCH for update/edit requests
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ certificate: updatedCertificateData }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with updating the certificate');
+    }
+  },
+);
+
 const certificatesSlice = createSlice({
   name: 'display_personnel',
   initialState,
