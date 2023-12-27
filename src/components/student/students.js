@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
+import { displayCertificates } from '../../redux/certificateSlice';
 
 function Students() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const students = useSelector((state) => state.display_students.value);
+  const certificates = useSelector((state) => state.display_certificates.value);
   const [token, setToken] = useState('');
   const [selectedStudents, setSelectedStudents] = useState([]);
   const location = useLocation();
@@ -41,6 +43,7 @@ function Students() {
   useEffect(() => {
     checkAuthentication();
     dispatch(displayStudents(token));
+    dispatch(displayCertificates(token));
   }, [token]);
 
   const handleSelectedStudents = (param) => {
@@ -55,6 +58,8 @@ function Students() {
   };
 
   const batchStudents = students.filter((each) => each.batch_id === Number(batchId));
+  const screenedCertificates = certificates.map((each) => each.student_id);
+  console.log(screenedCertificates);
   if (batchStudents.length > 0) {
     return (
       <div>
@@ -76,6 +81,7 @@ function Students() {
                   key={each.id}
                   eachStudent={each}
                   handleSelectedStudents={handleSelectedStudents}
+                  certificates={screenedCertificates}
                 />
               ))
           }
