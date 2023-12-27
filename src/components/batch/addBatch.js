@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addBatch } from '../../redux/batchSlice';
 
 function AddBatch() {
   const dispatch = useDispatch();
-
+  const [token, setToken] = useState('');
+  const navigate = useNavigate();
   const [batchData, setBatchData] = useState({
     name: '',
     start_date: '',
     end_date: '',
   });
 
+  const checkAuthentication = () => {
+    const storedData = localStorage.getItem('oilchemAdmin');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      if (new Date().getTime() > parsedData.expirationTime) {
+        localStorage.removeItem('oilchemAdmin');
+        navigate('/login');
+      } else {
+        setToken(parsedData.extractedUserData.token);
+      }
+    } else {
+      navigate('/login');
+    }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
+  }, [dispatch]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedData = localStorage.getItem('oilchemAdmin');
-    const parsedData = JSON.parse(storedData);
     await dispatch(addBatch({
       batchData,
-      token: parsedData.extractedUserData.token,
+      token,
     }));
   };
 

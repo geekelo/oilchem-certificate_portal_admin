@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 function EachCertificate({
   eachCertificate,
@@ -41,6 +42,11 @@ function EachCertificate({
         <p>{facilitator[0].name || ''}</p>
         <p>{facilitator[0].signature || ''}</p>
       </div>
+      <NavLink
+        to={`/editcertificate/${eachCertificate.id}`}
+      >
+        Edit
+      </NavLink>
     </div>
   );
 }

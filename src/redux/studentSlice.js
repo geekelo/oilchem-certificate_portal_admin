@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: [],
+  student: {},
   loggedin: 'empty',
   status: 'idle',
   error: 'no errors yet',
@@ -28,6 +29,31 @@ export const displayStudents = createAsyncThunk('user/display_students', async (
     throw new Error('Something went wrong with creating the user');
   }
 });
+
+export const displayStudent = createAsyncThunk(
+  'user/display_student',
+  async (payload) => {
+    const { studentId, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/students/${studentId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with creating the user');
+    }
+  },
+);
 
 export const deleteStudent = createAsyncThunk(
   'students/deleteStudent',
@@ -85,7 +111,7 @@ export const addStudent = createAsyncThunk(
 export const editStudent = createAsyncThunk(
   'user/editStudent',
   async (payload, { dispatch }) => {
-    const { studentId, updatedStudentData, token } = payload;
+    const { studentId, studentData, token } = payload;
     try {
       const response = await fetch(`http://localhost:2000/api/v1/students/${studentId}`, {
         method: 'PATCH', // Use PATCH for update/edit requests
@@ -93,7 +119,7 @@ export const editStudent = createAsyncThunk(
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ student: updatedStudentData }),
+        body: JSON.stringify({ student: studentData }),
       });
 
       if (!response.ok) {
@@ -127,6 +153,24 @@ const displayStudentsSlice = createSlice({
         status: 'done',
       }))
       .addCase(displayStudents.rejected, (state, action) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'failed',
+        error: action.error.message,
+      }))
+      // extra reducers for display tudent
+      .addCase(displayStudent.pending, (state) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'loading',
+      }))
+      .addCase(displayStudent.fulfilled, (state, action) => ({
+        ...state,
+        loggedin: 'true',
+        student: action.payload,
+        status: 'done',
+      }))
+      .addCase(displayStudent.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',

@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { addStudent } from '../../redux/studentSlice';
 
 function AddStudent() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const studentID = uuidv4();
   const truncatedId = studentID.substring(0, 11);
   const location = useLocation();
   const batchId = location.pathname.split('/').pop();
+  const [token, setToken] = useState('');
 
   const [studentData, setstudentData] = useState({
     name: '',
@@ -17,13 +19,30 @@ function AddStudent() {
     batch_id: batchId,
   });
 
+  const checkAuthentication = () => {
+    const storedData = localStorage.getItem('oilchemAdmin');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      if (new Date().getTime() > parsedData.expirationTime) {
+        localStorage.removeItem('oilchemAdmin');
+        navigate('/login');
+      } else {
+        setToken(parsedData.extractedUserData.token);
+      }
+    } else {
+      navigate('/login');
+    }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
+  }, [dispatch]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedData = localStorage.getItem('oilchemAdmin');
-    const parsedData = JSON.parse(storedData);
     await dispatch(addStudent({
       studentData,
-      token: parsedData.extractedUserData.token,
+      token,
     }));
   };
 

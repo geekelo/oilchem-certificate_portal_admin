@@ -12,7 +12,6 @@ function Navbar() {
     <div className="navSection">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/personnel">Personnel</NavLink>
-      <NavLink to="/students">Students</NavLink>
       <NavLink to="/certificates">Certificates</NavLink>
       <button type="submit" onClick={handleSignout}>Sign out</button>
     </div>

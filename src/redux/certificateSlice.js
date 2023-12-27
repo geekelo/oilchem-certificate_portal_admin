@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: [],
+  certificate: {},
   loggedin: 'empty',
   status: 'idle',
   error: 'no errors yet',
@@ -32,10 +33,34 @@ export const displayCertificates = createAsyncThunk(
   },
 );
 
+export const displayCertificate = createAsyncThunk(
+  'user/display_certificate',
+  async (payload) => {
+    const { certificateId, token } = payload;
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/certificates/${certificateId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with creating the user');
+    }
+  },
+);
+
 export const deleteCertificate = createAsyncThunk(
   'students/deleteCertificate',
   async (payload) => {
-    console.log(payload);
     const { id, token } = payload;
 
     try {
@@ -88,7 +113,7 @@ export const addCertificate = createAsyncThunk(
 export const editCertificate = createAsyncThunk(
   'certificate/editCertificate',
   async (payload) => {
-    const { certificateId, updatedCertificateData, token } = payload;
+    const { certificateId, certificateData, token } = payload;
     try {
       const response = await fetch(`http://localhost:2000/api/v1/certificates/${certificateId}`, {
         method: 'PATCH', // Use PATCH for update/edit requests
@@ -96,7 +121,7 @@ export const editCertificate = createAsyncThunk(
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ certificate: updatedCertificateData }),
+        body: JSON.stringify({ certificate: certificateData }),
       });
 
       if (!response.ok) {
@@ -130,6 +155,25 @@ const certificatesSlice = createSlice({
         status: 'done',
       }))
       .addCase(displayCertificates.rejected, (state, action) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'failed',
+        error: action.error.message,
+      }))
+      // extra reducers for displaybatch
+      .addCase(displayCertificate.pending, (state) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'loading',
+      }))
+      .addCase(displayCertificate.fulfilled, (state, action) => ({
+        // Update the state with the received user data
+        ...state,
+        loggedin: 'true',
+        certificate: action.payload,
+        status: 'done',
+      }))
+      .addCase(displayCertificate.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',

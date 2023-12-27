@@ -18,6 +18,7 @@ function EachStudent({ eachStudent, handleSelectedStudents }) {
         <p>{eachStudent.name}</p>
         <p>{eachStudent.unique_number}</p>
         <NavLink to={`/addcertificate/${eachStudent.id}`}>Add </NavLink>
+        <NavLink to={`/editstudent/${eachStudent.id}`}>Edit</NavLink>
       </div>
     </div>
   );

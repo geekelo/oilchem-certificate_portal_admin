@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { addCertificate } from '../../redux/certificateSlice';
 import { displayPersonnel } from '../../redux/personnelSlice';
 
 function AddCertificate() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split('/').pop();
   const personnel = useSelector((state) => state.display_personnel.value);
+  const [token, setToken] = useState('');
   const [certificateData, setCertificateData] = useState({
     name: '',
     title: '',
@@ -21,6 +23,25 @@ function AddCertificate() {
     training_instructor_id: 0,
     external_facilitator_id: 0,
   });
+
+  const checkAuthentication = () => {
+    const storedData = localStorage.getItem('oilchemAdmin');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      if (new Date().getTime() > parsedData.expirationTime) {
+        localStorage.removeItem('oilchemAdmin');
+        navigate('/login');
+      } else {
+        setToken(parsedData.extractedUserData.token);
+      }
+    } else {
+      navigate('/login');
+    }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,15 +62,12 @@ function AddCertificate() {
   };
 
   useEffect(() => {
-    const fetchdata = async (token) => {
+    const fetchdata = async () => {
       await dispatch(displayPersonnel({ token }));
     };
-    const storedData = localStorage.getItem('oilchemAdmin');
-    const parsedData = JSON.parse(storedData);
-    fetchdata(parsedData.extractedUserData.token);
-  }, [dispatch]);
+    fetchdata();
+  }, [token]);
 
-  console.log(personnel);
   return (
     <div>
       <p>

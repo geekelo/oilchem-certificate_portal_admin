@@ -1,9 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addPersonnel } from '../../redux/personnelSlice';
 
 function AddPersonnel() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [token, setToken] = useState('');
+  const checkAuthentication = () => {
+    const storedData = localStorage.getItem('oilchemAdmin');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      if (new Date().getTime() > parsedData.expirationTime) {
+        localStorage.removeItem('oilchemAdmin');
+        navigate('/login');
+      } else {
+        setToken(parsedData.extractedUserData.token);
+      }
+    } else {
+      navigate('/login');
+    }
+  };
+
+  useEffect(() => {
+    checkAuthentication();
+  }, [dispatch]);
+
   const [personnelData, setPersonnelData] = useState({
     name: '',
     signature: '',
@@ -11,11 +33,9 @@ function AddPersonnel() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedData = localStorage.getItem('oilchemAdmin');
-    const parsedData = JSON.parse(storedData);
     await dispatch(addPersonnel({
       personnelData,
-      token: parsedData.extractedUserData.token,
+      token,
     }));
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 function EachPersonnel({ eachPersonnel, handleSelectedPersonnel }) {
   const isChecked = () => {
@@ -17,6 +18,7 @@ function EachPersonnel({ eachPersonnel, handleSelectedPersonnel }) {
         <p>{eachPersonnel.name}</p>
         <img src={eachPersonnel.signature} alt="personnel" width="50" />
       </div>
+      <NavLink to={`/editpersonnel/${eachPersonnel.id}`}>Edit</NavLink>
     </div>
   );
 }

@@ -17,6 +17,10 @@ import AddPersonnel from './components/personnel/addPersonnel';
 import AddStudent from './components/student/addStudent';
 import AddCertificate from './components/certificate/addCertificate';
 import AddBatch from './components/batch/addBatch';
+import EditBatch from './components/batch/editBatch';
+import EditCertificate from './components/certificate/editCertificate';
+import EditPersonnel from './components/personnel/editPersonnel';
+import EditStudent from './components/student/editStudent';
 
 function App() {
   return (
@@ -38,6 +42,10 @@ function App() {
               <Route path="/addstudent/:id" element={<AddStudent />} />
               <Route path="/addcertificate/:id" element={<AddCertificate />} />
               <Route path="/addbatch" element={<AddBatch />} />
+              <Route path="/editbatch/:id" element={<EditBatch />} />
+              <Route path="/editcertificate/:id" element={<EditCertificate />} />
+              <Route path="/editpersonnel/:id" element={<EditPersonnel />} />
+              <Route path="/editstudent/:id" element={<EditStudent />} />
             </Routes>
           </div>
         </div>
