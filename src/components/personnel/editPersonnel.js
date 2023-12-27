@@ -49,6 +49,7 @@ function EditPersonnel() {
       personnelData,
       token,
     }));
+    navigate('/personnel');
   };
 
   const handleChange = (e) => {

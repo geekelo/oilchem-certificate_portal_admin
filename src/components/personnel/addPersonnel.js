@@ -37,6 +37,7 @@ function AddPersonnel() {
       personnelData,
       token,
     }));
+    navigate('/personnel');
   };
 
   const handleChange = (e) => {

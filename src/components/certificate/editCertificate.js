@@ -37,9 +37,6 @@ function EditCertificate() {
 
   const [certificateData, setCertificateData] = useState({});
 
-  console.log(certificateData);
-  console.log(id);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(editCertificate({
@@ -47,6 +44,7 @@ function EditCertificate() {
       certificateData,
       token,
     }));
+    navigate('/certificates');
   };
 
   const handleChange = (e) => {

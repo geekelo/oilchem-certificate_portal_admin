@@ -38,6 +38,7 @@ function AddBatch() {
       batchData,
       token,
     }));
+    navigate('/');
   };
 
   const handleChange = (e) => {

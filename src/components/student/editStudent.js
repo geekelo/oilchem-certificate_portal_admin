@@ -51,6 +51,7 @@ function EditStudent() {
       studentData,
       token,
     }));
+    navigate(-1);
   };
 
   const handleChange = (e) => {

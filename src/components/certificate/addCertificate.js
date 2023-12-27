@@ -51,7 +51,7 @@ function AddCertificate() {
       certificateData,
       token: parsedData.extractedUserData.token,
     }));
-    console.log(certificateData);
+    navigate(-1);
   };
 
   const handleChange = (e) => {

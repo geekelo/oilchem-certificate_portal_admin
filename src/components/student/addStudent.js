@@ -44,6 +44,7 @@ function AddStudent() {
       studentData,
       token,
     }));
+    navigate(-1);
   };
 
   const handleChange = (e) => {

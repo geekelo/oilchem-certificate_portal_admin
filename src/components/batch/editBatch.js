@@ -56,6 +56,7 @@ function EditBatch() {
       batchData,
       token,
     }));
+    navigate(-1);
   };
 
   const handleChange = (e) => {
