@@ -137,7 +137,7 @@ export const editCertificate = createAsyncThunk(
 );
 
 const certificatesSlice = createSlice({
-  name: 'display_personnel',
+  name: 'display_certificates',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

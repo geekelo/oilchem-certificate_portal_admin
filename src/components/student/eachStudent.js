@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function EachStudent({ eachStudent, handleSelectedStudents, certificates }) {
+  const [certificateExist, setCertificateExist] = useState(false);
   const isChecked = () => {
     handleSelectedStudents(eachStudent.id);
   };
 
   console.log(certificates);
+  console.log(eachStudent.id);
+  useEffect(() => {
+    if (certificates.includes(eachStudent.id)) {
+      setCertificateExist(true);
+    } else {
+      setCertificateExist(false);
+    }
+  });
+
   return (
     <div>
       <div>
@@ -18,8 +28,8 @@ function EachStudent({ eachStudent, handleSelectedStudents, certificates }) {
         <p>{eachStudent.id}</p>
         <p>{eachStudent.name}</p>
         <p>{eachStudent.unique_number}</p>
-        { certificates.includes(eachStudent.id)
-          ? (<NavLink to={`/addcertificate/${eachStudent.id}`}>Add </NavLink>)
+        { !certificateExist
+          ? (<NavLink to={`/addcertificate/${eachStudent.id}`}>Add</NavLink>)
           : (<p>Added</p>)}
         <NavLink to={`/editstudent/${eachStudent.id}`}>Edit</NavLink>
       </div>

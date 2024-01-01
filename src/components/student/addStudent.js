@@ -7,15 +7,16 @@ import { addStudent } from '../../redux/studentSlice';
 function AddStudent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const studentID = uuidv4();
-  const truncatedId = studentID.substring(0, 11);
+  const generatedID = uuidv4();
+  const truncatedId = generatedID.substring(0, 6);
+  const studentId = `oms${truncatedId}`;
   const location = useLocation();
   const batchId = location.pathname.split('/').pop();
   const [token, setToken] = useState('');
 
   const [studentData, setstudentData] = useState({
     name: '',
-    unique_number: truncatedId,
+    unique_number: studentId,
     batch_id: batchId,
   });
 

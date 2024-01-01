@@ -12,10 +12,10 @@ function AddCertificate() {
   const personnel = useSelector((state) => state.display_personnel.value);
   const [token, setToken] = useState('');
   const [certificateData, setCertificateData] = useState({
-    name: '',
-    title: '',
-    course: '',
-    purpose: '',
+    name: 'Oilchem Mud School',
+    title: 'CERTIFICATION OF ACCOMPLISHMENT',
+    course: 'BASIC MUD ENGINEERING',
+    purpose: 'HAS SATISFACTORILY COMPLETED THE PRESCRIBED API RP 13L TECHNICAL TRAINING COURSES',
     student_id: id,
     start_date: '',
     end_date: '',
