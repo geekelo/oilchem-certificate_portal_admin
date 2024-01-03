@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { FaTrash, FaPlus } from 'react-icons/fa';
 import { displayPersonnel, deletePersonnel } from '../../redux/personnelSlice';
 import EachPersonnel from './eachPersonnel';
+import '../../stylesheets/tables.css';
 
 function Personnel() {
   const navigate = useNavigate();
@@ -54,23 +56,28 @@ function Personnel() {
 
   if (personnel.length > 0) {
     return (
-      <div>
-        <div>
-          <NavLink to="/addpersonnel">Add </NavLink>
-          <button type="submit" onClick={handleDelete}>Delete</button>
+      <div className="table-cont">
+        <div className="topbar">
+          <p className="title">Personnel</p>
+          <div className="title-btn">
+            <NavLink className="deleteBtn" to="/addpersonnel">
+              <FaPlus />
+              <span> &nbsp; Add new</span>
+            </NavLink>
+            <button className="deleteBtn" type="submit" onClick={handleDelete}>
+              <FaTrash />
+              <span> &nbsp; Bulk Delete</span>
+            </button>
+          </div>
         </div>
-        <header>
-          <p>ID</p>
-          <p>Name</p>
-          <p>Signature</p>
-        </header>
-        <div>
+        <div className="flex-container">
           {
             [...personnel]
               .sort((a, b) => b.id - a.id)
-              .map((each) => (
+              .map((each, index) => (
                 <EachPersonnel
                   key={each.id}
+                  index={personnel.length - (index + 1)}
                   eachPersonnel={each}
                   handleSelectedPersonnel={handleSelectedPersonnel}
                 />

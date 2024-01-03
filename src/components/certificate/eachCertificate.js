@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { FaPen } from 'react-icons/fa';
+import '../../stylesheets/tables.css';
 
 function EachCertificate({
   eachCertificate,
   students,
   personnels,
   handleSelectedCertificates,
+  index,
 }) {
   const currStudent = students.filter((each) => each.id === eachCertificate.student_id);
   const director = personnels.filter((each) => each.id === eachCertificate.training_director_id);
@@ -21,31 +24,71 @@ function EachCertificate({
 
   return (
     <div>
-      <div>
-        <input
-          type="checkbox"
-          onChange={isChecked}
-        />
-        <p>{eachCertificate.id}</p>
-        <p>{eachCertificate.name}</p>
-        <p>{eachCertificate.title}</p>
-        <p>{eachCertificate.course}</p>
-        <p>{eachCertificate.purpose}</p>
-        <p>{studentName}</p>
-        <p>{studentNumber}</p>
-        <p>{eachCertificate.start_date}</p>
-        <p>{eachCertificate.end_date}</p>
-        <p>{director[0].name || ''}</p>
-        <p>{director[0].signature || ''}</p>
-        <p>{instructor[0].name || ''}</p>
-        <p>{instructor[0].signature || ''}</p>
-        <p>{facilitator[0].name || ''}</p>
-        <p>{facilitator[0].signature || ''}</p>
+      <header className="table-header">
+        <div className="id">
+          <p className="id-text">{index + 1}</p>
+        </div>
+        <p className="name">NAME</p>
+        <p className="cert-title">TITLE</p>
+        <p className="course">COURSE</p>
+        <p className="purpose">PURPOSE</p>
+        <p className="student">STUDENT</p>
+        <p className="duration">DURATION</p>
+        <p className="personnel">PERSONNEL</p>
+      </header>
+      <div className="flex-item">
+        <div className="checkbox-cont select">
+          <input
+            className="checkbox"
+            type="checkbox"
+            onChange={isChecked}
+          />
+        </div>
+        <p className="name">{eachCertificate.name}</p>
+        <p className="cert-title">{eachCertificate.title}</p>
+        <p className="course">{eachCertificate.course}</p>
+        <p className="purpose">{eachCertificate.purpose}</p>
+        <div className="student">
+          <div>
+            <p><b>Student Number:</b></p>
+            {studentName}
+          </div>
+          <div>
+            <p><b>Certificate Number:</b></p>
+            {studentNumber}
+          </div>
+        </div>
+        <div className="duration">
+          <div>
+            <p><b>Start date:</b></p>
+            {eachCertificate.start_date}
+          </div>
+          <div>
+            <p><b>End date:</b></p>
+            {eachCertificate.end_date}
+          </div>
+        </div>
+        <div className="personnel">
+          <div>
+            <p><b>Training Director:</b></p>
+            {director[0].name || ''}
+          </div>
+          <div>
+            <p><b>Training Instructor:</b></p>
+            {instructor[0].name || ''}
+          </div>
+          <div>
+            <p><b>Training Facilitator:</b></p>
+            {facilitator[0].name || ''}
+          </div>
+        </div>
       </div>
       <NavLink
+        className="edit-btn"
         to={`/editcertificate/${eachCertificate.id}`}
       >
-        Edit
+        <FaPen />
+        &nbsp;Edit
       </NavLink>
     </div>
   );
@@ -80,6 +123,7 @@ EachCertificate.propTypes = {
       // Add more properties if needed
     }),
   ).isRequired,
+  index: PropTypes.string.isRequired,
 };
 
 export default EachCertificate;

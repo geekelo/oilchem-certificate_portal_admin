@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FaTrash } from 'react-icons/fa';
 import { deleteCertificate, displayCertificates } from '../../redux/certificateSlice';
 import EachCertificate from './eachCertificate';
 import { displayPersonnel } from '../../redux/personnelSlice';
 import { displayStudents } from '../../redux/studentSlice';
+import '../../stylesheets/tables.css';
 
 function Certificates() {
   const navigate = useNavigate();
@@ -71,25 +73,27 @@ function Certificates() {
 
   if (certificateData.length > 0) {
     return (
-      <div>
-        <div>
-          <button type="submit" onClick={handleDelete}>Delete</button>
+      <div className="table-cont">
+        <div className="topbar">
+          <p className="title">Certificates</p>
+          <div className="title-btn">
+            <button className="deleteBtn" type="submit" onClick={handleDelete}>
+              <FaTrash />
+              <span> &nbsp; Bulk Delete</span>
+            </button>
+          </div>
         </div>
-        <header>
-          <p>ID</p>
-          <p>Name</p>
-          <p>Signature</p>
-        </header>
-        <div>
+        <div className="flex-container">
           {
             [...certificateData]
               .sort((a, b) => b.id - a.id)
-              .map((each) => (
+              .map((each, index) => (
                 <EachCertificate
                   key={each.id}
                   eachCertificate={each}
                   students={students}
                   personnels={personnels}
+                  index={certificateData.length - (index + 1)}
                   handleSelectedCertificates={handleSelectedCertificates}
                 />
               ))

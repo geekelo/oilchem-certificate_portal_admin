@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { FaTrash, FaPlus } from 'react-icons/fa';
 import { displayBatches, deleteBatch } from '../redux/batchSlice';
 import EachBatch from './batch/eachBatch';
+import '../stylesheets/home.css';
 
 function Home() {
   const navigate = useNavigate();
@@ -52,20 +54,52 @@ function Home() {
   };
 
   return (
-    <div>
-      <p>Home</p>
-      <hr />
-      <div>
-        <NavLink to="/addbatch">Add </NavLink>
-        <button type="submit" onClick={handleDelete}>Delete</button>
+    <div className="homecont">
+      <div className="statistics-cont">
+        <div className="total-sub-sect">
+          <div className="total-each-sect">
+            <p className="statistics-title">Students</p>
+            <p className="">Total: 6</p>
+          </div>
+          <div className="total-each-sect">
+            <p className="statistics-title">Certificates</p>
+            <p className="">Total: 6</p>
+          </div>
+        </div>
+        <div className="total-sub-sect">
+          <div className="total-each-sect">
+            <p className="statistics-title">Personnel</p>
+            <p className="">Total: 6</p>
+          </div>
+          <div className="total-each-sect">
+            <p className="statistics-title">Batches</p>
+            <p className="">Total: 6</p>
+          </div>
+        </div>
       </div>
-      <form>
+
+      <hr className="home-divider" />
+      <div className="topbar">
+        <p className="title">Batches</p>
+        <div className="title-btn">
+          <NavLink className="deleteBtn" to="/addbatch">
+            <FaPlus />
+            <span> &nbsp; Add new</span>
+          </NavLink>
+          <button className="deleteBtn" type="submit" onClick={handleDelete}>
+            <FaTrash />
+            <span> &nbsp; Bulk Delete</span>
+          </button>
+        </div>
+      </div>
+      <form className="batch-cont">
         {
           [...batches]
             .sort((a, b) => b.id - a.id)
-            .map((each) => (
+            .map((each, index) => (
               <EachBatch
                 key={each.id}
+                index={batches.length - (index + 1)}
                 eachBatch={each}
                 handleSelectedBatches={handleSelectedBatches}
               />

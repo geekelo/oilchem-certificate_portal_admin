@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { FaTrash, FaPlus } from 'react-icons/fa';
 import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
 import { displayCertificates } from '../../redux/certificateSlice';
+import '../../stylesheets/tables.css';
 
 function Students() {
   const navigate = useNavigate();
@@ -59,33 +61,37 @@ function Students() {
 
   const batchStudents = students.filter((each) => each.batch_id === Number(batchId));
   const screenedCertificates = certificates.map((each) => each.student_id);
-  console.log(screenedCertificates);
   if (batchStudents.length > 0) {
     return (
-      <div>
-        <div>
-          <NavLink to={`/addstudent/${batchId}`}>Add </NavLink>
-          <button type="submit" onClick={handleDelete}>Delete</button>
+      <div className="table-cont">
+        <div className="topbar">
+          <p className="title">Students</p>
+          <div className="title-btn">
+            <NavLink className="deleteBtn" to={`/addstudent/${batchId}`}>
+              <FaPlus />
+              <span> &nbsp; Add new</span>
+            </NavLink>
+            <button className="deleteBtn" type="submit" onClick={handleDelete}>
+              <FaTrash />
+              <span> &nbsp; Bulk Delete</span>
+            </button>
+          </div>
         </div>
-        <div>
-          <p>ID</p>
-          <p>Name</p>
-          <p>Cert. No</p>
-        </div>
-        <form>
+        <div className="flex-container">
           {
             [...batchStudents]
               .sort((a, b) => b.id - a.id)
-              .map((each) => (
+              .map((each, index) => (
                 <EachStudent
                   key={each.id}
+                  index={batchStudents.length - (index + 1)}
                   eachStudent={each}
                   handleSelectedStudents={handleSelectedStudents}
                   certificates={screenedCertificates}
                 />
               ))
           }
-        </form>
+        </div>
       </div>
     );
   }

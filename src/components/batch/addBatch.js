@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addBatch } from '../../redux/batchSlice';
+import '../../stylesheets/forms.css';
 
 function AddBatch() {
   const dispatch = useDispatch();
@@ -51,9 +52,9 @@ function AddBatch() {
   return (
     <div>
       <p>
-        Add Student
+        Create New Batch
       </p>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
           <input

@@ -1,0 +1,226 @@
+.table-cont{
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 87%;
+  gap: 10%;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 3rem;
+  font-family: 'Lato', sans-serif;
+  border-left: 13px solid rgb(17, 57, 44);
+  padding: 1rem 0;
+  padding-left: 1rem;
+  width: 50%;
+  background-color: #0c340111;
+  border-image: linear-gradient(to bottom, aquamarine, rgb(17, 57, 44));
+  border-image-slice: 1;
+}
+
+.student-name,
+.student-number {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.student-action {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.student-select {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title-btn {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteBtn {
+  border: 1px solid rgb(17, 57, 44);
+  background-color: #fff;
+  color: rgb(17, 57, 44);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.deleteBtn:hover {
+  background-color: rgb(17, 57, 44);
+  color: #fff;
+}
+
+.table-header {
+  display: flex;
+  width: 85%;
+  background-color: rgb(17, 57, 44);
+  padding: 1rem;
+  color: #fff;
+  font-family: 'Montserrat', 'Arial';
+  font-size: 0.8rem;
+  justify-content: flex-start;
+  font-weight: bold;
+  margin-top: 5%;
+  align-items: center;
+}
+
+.flex-item {
+  display: flex;
+  width: 85%;
+  padding: 1rem;
+  font-family: 'Montserrat', 'Arial';
+  background-color: #fff;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.id {
+  width: 2%;
+  padding-right: 2rem;
+}
+
+.name {
+  width: 5%;
+  padding-right: 3rem;
+}
+
+.personnel-name {
+  width: 50%;
+  padding-right: 3rem;
+  padding-left: 2rem;
+}
+
+.student {
+  width: 11%;
+}
+
+.select {
+  width: 2%;
+  padding-right: 2rem;
+  padding-top: 0.3rem;
+}
+
+.cert-title {
+  width: 15%;
+  padding-right: 1rem;
+}
+
+.course {
+  width: 12%;
+  padding-right: 1rem;
+  
+}
+
+.purpose {
+  width: 14%;
+  padding-right: 1rem;
+}
+
+.duration {
+  width: 10%;
+  padding-right: 2rem;
+  padding-left: 1rem;
+}
+
+.personnel {
+  width: 10%;
+}
+
+.edit-btn,
+.personnel-edit-btn {
+  text-decoration: none;
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 1rem 0;
+  color: rgb(17, 57, 44);
+  font-weight: bold;
+  box-shadow: 1px 2px rgba(0, 0, 0, 0.134);
+}
+
+.personnel-edit-btn {
+  width: 20%;
+  margin-left: 68%;
+}
+
+.edit-btn {
+  width: 88%;
+}
+
+.edit-btn:hover,
+.personnel-edit-btn:hover {
+  opacity: 0.8;
+}
+
+.id-text {
+  display: flex;
+  background-color: aquamarine;
+  width: 5vh;
+  height: 5vh;
+  text-align: center;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  color: rgb(17, 57, 44);
+}
+
+input[type=checkbox] {
+  position: relative;
+	border: 2px solid rgb(17, 57, 44);
+	border-radius: 20px;
+	background: none;
+	cursor: pointer;
+	line-height: 0;
+	margin: 0 .6em 0 0;
+	outline: 0;
+	padding: 0 !important;
+	vertical-align: text-top;
+	height: 30px;
+	width: 30px;
+	-webkit-appearance: none;
+  opacity: .5;
+}
+
+input[type=checkbox]:hover {
+  opacity: 1;
+}
+
+input[type=checkbox]:checked {
+  background-color: rgb(9, 50, 9);
+  opacity: 1;
+}
+
+input[type=checkbox]:before {
+  content: '';
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 4px;
+  height: 10px;
+  border: solid #FFF;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
