@@ -74,7 +74,7 @@ EachStudent.propTypes = {
   }).isRequired,
   handleSelectedStudents: PropTypes.func.isRequired,
   certificates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default EachStudent;

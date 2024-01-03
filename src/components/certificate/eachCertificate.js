@@ -102,12 +102,12 @@ EachCertificate.propTypes = {
     title: PropTypes.string.isRequired,
     course: PropTypes.string.isRequired,
     purpose: PropTypes.string.isRequired,
-    student_id: PropTypes.string.isRequired,
+    student_id: PropTypes.number.isRequired,
     start_date: PropTypes.string.isRequired,
     end_date: PropTypes.string.isRequired,
-    training_director_id: PropTypes.string.isRequired,
-    training_instructor_id: PropTypes.string.isRequired,
-    external_facilitator_id: PropTypes.string.isRequired,
+    training_director_id: PropTypes.number.isRequired,
+    training_instructor_id: PropTypes.number.isRequired,
+    external_facilitator_id: PropTypes.number.isRequired,
   }).isRequired,
   students: PropTypes.arrayOf(
     PropTypes.shape({
@@ -123,7 +123,7 @@ EachCertificate.propTypes = {
       // Add more properties if needed
     }),
   ).isRequired,
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default EachCertificate;

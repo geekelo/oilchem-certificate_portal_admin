@@ -44,7 +44,7 @@ EachPersonnel.propTypes = {
     signature: PropTypes.string.isRequired, // Make it optional if needed
   }).isRequired,
   handleSelectedPersonnel: PropTypes.func.isRequired,
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default EachPersonnel;

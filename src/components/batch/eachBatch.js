@@ -51,7 +51,7 @@ EachBatch.propTypes = {
     end_date: PropTypes.string.isRequired, // Make it optional if needed
   }).isRequired,
   handleSelectedBatches: PropTypes.func.isRequired,
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default EachBatch;
