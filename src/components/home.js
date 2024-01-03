@@ -5,11 +5,17 @@ import { FaTrash, FaPlus } from 'react-icons/fa';
 import { displayBatches, deleteBatch } from '../redux/batchSlice';
 import EachBatch from './batch/eachBatch';
 import '../stylesheets/home.css';
+import { displayStudents } from '../redux/studentSlice';
+import { displayCertificates } from '../redux/certificateSlice';
+import { displayPersonnel } from '../redux/personnelSlice';
 
 function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const batches = useSelector((state) => state.display_batches.value) || [];
+  const students = useSelector((state) => state.display_students.value) || [];
+  const certificates = useSelector((state) => state.display_certificates.value) || [];
+  const personnel = useSelector((state) => state.display_personnel.value) || [];
   const [token, setToken] = useState('');
   const [selectedBatches, setSelectedBatches] = useState([]);
 
@@ -40,6 +46,9 @@ function Home() {
   useEffect(() => {
     checkAuthentication();
     dispatch(displayBatches(token));
+    dispatch(displayStudents(token));
+    dispatch(displayCertificates(token));
+    dispatch(displayPersonnel(token));
   }, [token]);
 
   const handleSelectedBatches = (param) => {
@@ -59,21 +68,37 @@ function Home() {
         <div className="total-sub-sect">
           <div className="total-each-sect">
             <p className="statistics-title">Students</p>
-            <p className="">Total: 6</p>
+            <p className="">
+              Total:
+              &nbsp;
+              {students.length}
+            </p>
           </div>
           <div className="total-each-sect">
             <p className="statistics-title">Certificates</p>
-            <p className="">Total: 6</p>
+            <p className="">
+              Total:
+              &nbsp;
+              {certificates.length}
+            </p>
           </div>
         </div>
         <div className="total-sub-sect">
           <div className="total-each-sect">
             <p className="statistics-title">Personnel</p>
-            <p className="">Total: 6</p>
+            <p className="">
+              Total:
+              &nbsp;
+              {personnel.length}
+            </p>
           </div>
           <div className="total-each-sect">
             <p className="statistics-title">Batches</p>
-            <p className="">Total: 6</p>
+            <p className="">
+              Total:
+              &nbsp;
+              {batches.length}
+            </p>
           </div>
         </div>
       </div>
