@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { displayStudents, editStudent } from '../../redux/studentSlice';
+import '../../stylesheets/forms.css';
 
 function EditStudent() {
   const dispatch = useDispatch();
@@ -63,11 +64,8 @@ function EditStudent() {
 
   if (student) {
     return (
-      <div>
-        <p>
-          Edit Student
-        </p>
-        <form onSubmit={handleSubmit}>
+      <div className="form-cont">
+        <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="name">
             Name:
             <input
@@ -81,8 +79,17 @@ function EditStudent() {
               id="name"
             />
           </label>
-          <button type="submit">Add Student</button>
+          <button className="submitbtn" type="submit">UPDATE</button>
         </form>
+        <div className="form-title-sect">
+          <p className="form-title">
+            Edit
+            <br />
+            Stu-
+            <br />
+            dent
+          </p>
+        </div>
       </div>
     );
   }

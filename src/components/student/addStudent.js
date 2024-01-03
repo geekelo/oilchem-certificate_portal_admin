@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { addStudent } from '../../redux/studentSlice';
+import '../../stylesheets/forms.css';
 
 function AddStudent() {
   const dispatch = useDispatch();
@@ -56,11 +57,8 @@ function AddStudent() {
   };
 
   return (
-    <div>
-      <p>
-        Add Student
-      </p>
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
           <input
@@ -74,8 +72,17 @@ function AddStudent() {
             id="name"
           />
         </label>
-        <button type="submit">Add Student</button>
+        <button className="submitbtn" type="submit">SUBMIT</button>
       </form>
+      <div className="form-title-sect">
+        <p className="form-title">
+          Add
+          <br />
+          Stu-
+          <br />
+          dent
+        </p>
+      </div>
     </div>
   );
 }

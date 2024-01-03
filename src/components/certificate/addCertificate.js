@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addCertificate } from '../../redux/certificateSlice';
 import { displayPersonnel } from '../../redux/personnelSlice';
+import '../../stylesheets/forms.css';
 
 function AddCertificate() {
   const dispatch = useDispatch();
@@ -69,11 +70,8 @@ function AddCertificate() {
   }, [token]);
 
   return (
-    <div>
-      <p>
-        Add Certiicate
-      </p>
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
           <input
@@ -88,7 +86,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="title">
-          title:
+          Title:
           <input
             className="form-input"
             type="text"
@@ -101,7 +99,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="course">
-          course:
+          Course:
           <input
             className="form-input"
             type="course"
@@ -114,7 +112,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="purpose">
-          purpose:
+          Purpose:
           <input
             className="form-input"
             type="text"
@@ -127,7 +125,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="start_date">
-          start date:
+          Start date:
           <input
             className="form-input"
             type="date"
@@ -140,7 +138,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="end_date">
-          end date:
+          End date:
           <input
             className="form-input"
             type="date"
@@ -153,7 +151,7 @@ function AddCertificate() {
           />
         </label>
         <label htmlFor="training_director_id">
-          training director:
+          Training director:
           <select id="training_director_id" name="training_director_id" onChange={handleChange}>
             <option value="">Select...</option>
             {
@@ -163,7 +161,7 @@ function AddCertificate() {
         </label>
 
         <label htmlFor="training_instructor_id">
-          training instructor:
+          Training instructor:
           <select id="training_instructor_id" name="training_instructor_id" onChange={handleChange}>
             <option value="">Select...</option>
             {
@@ -173,7 +171,7 @@ function AddCertificate() {
         </label>
 
         <label htmlFor="training_instructor_id">
-          training instructor:
+          Training instructor:
           <select id="external_facilitator_id" name="external_facilitator_id" onChange={handleChange}>
             <option value="">Select...</option>
             {
@@ -182,8 +180,28 @@ function AddCertificate() {
           </select>
         </label>
 
-        <button type="submit">Add Certificate</button>
+        <button className="submitbtn" type="submit">DONE</button>
       </form>
+      <div className="form-title-sect">
+        <p className="form-title">
+          Add
+          <br />
+          New
+          <br />
+          Certi-
+          <br />
+          ficate
+        </p>
+        <p className="form-title">
+          Add
+          <br />
+          New
+          <br />
+          Certi-
+          <br />
+          ficate
+        </p>
+      </div>
     </div>
   );
 }

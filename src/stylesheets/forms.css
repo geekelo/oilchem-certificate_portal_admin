@@ -1,4 +1,77 @@
+.form-cont {
+  display: flex;
+  width: 90%;
+}
+
 .form {
   display: flex;
   flex-direction: column;
+  width: 70%;
+  padding: 2rem;
+  justify-content: center;
+  background-color: #fff;
+  gap: 50px;
+  box-shadow: 1px 5px 5px rgba(25, 25, 25, 0.048);
+}
+
+label {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: 600;
+  gap: 10px;
+}
+
+.form-title-sect {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(67deg,#d2ffda,#94c894,#174217);
+  background-size: 180% 180%;
+  animation: gradient-animation 2s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-title {
+  font-size: 3rem;
+  font-weight: 800;
+  width: 90%;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  margin: auto;
+}
+
+.form-input,
+input[type="date" i],
+select {
+  font-size: 1rem;
+  padding: 1.2rem;
+}
+
+.submitbtn {
+  background-color: #174217;
+  padding: 1rem;
+  font-weight: 800;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+}
+
+.submitbtn:hover {
+  opacity: 0.8;
 }

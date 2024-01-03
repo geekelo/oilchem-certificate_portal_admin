@@ -6,7 +6,7 @@ function Topbar() {
   return (
     <div className="topbarSection">
       <img className="logo" src={logo} alt="logo" />
-      <h3> &nbsp; OILCHEM MUD SCHOOL CERTIFICATE PORTAL CMS</h3>
+      <h3> &nbsp; OILCHEM MUD SCHOOL CERTIFICATE PORTAL</h3>
     </div>
   );
 }

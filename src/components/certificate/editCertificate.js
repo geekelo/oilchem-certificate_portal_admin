@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { displayCertificates, editCertificate } from '../../redux/certificateSlice';
 import { displayPersonnel } from '../../redux/personnelSlice';
+import '../../stylesheets/forms.css';
 
 function EditCertificate() {
   const dispatch = useDispatch();
@@ -95,11 +96,8 @@ function EditCertificate() {
       .filter((each) => each.id === certificate.external_facilitator_id);
 
     return (
-      <div>
-        <p>
-          Edit Certificate
-        </p>
-        <form onSubmit={handleSubmit}>
+      <div className="form-cont">
+        <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="name">
             Name:
             <input
@@ -114,7 +112,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="title">
-            title:
+            Title:
             <input
               className="form-input"
               type="text"
@@ -127,7 +125,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="course">
-            course:
+            Course:
             <input
               className="form-input"
               type="course"
@@ -140,7 +138,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="purpose">
-            purpose:
+            Purpose:
             <input
               className="form-input"
               type="text"
@@ -153,7 +151,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="start_date">
-            start date:
+            Start date:
             <input
               className="form-input"
               type="date"
@@ -166,7 +164,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="end_date">
-            end date:
+            End date:
             <input
               className="form-input"
               type="date"
@@ -179,7 +177,7 @@ function EditCertificate() {
             />
           </label>
           <label htmlFor="training_director_id">
-            training director:
+            Training director:
             <select id="training_director_id" name="training_director_id" onChange={handleChange}>
               <option value={trainingdirector[0].id}>{trainingdirector[0].name}</option>
               {
@@ -189,7 +187,7 @@ function EditCertificate() {
           </label>
 
           <label htmlFor="training_instructor_id">
-            training instructor:
+            Training instructor:
             <select id="training_instructor_id" name="training_instructor_id" onChange={handleChange}>
               <option value={traininginstructor[0].id}>{traininginstructor[0].name}</option>
               {
@@ -199,7 +197,7 @@ function EditCertificate() {
           </label>
 
           <label htmlFor="training_instructor_id">
-            external facilitator:
+            External facilitator:
             <select id="external_facilitator_id" name="external_facilitator_id" onChange={handleChange}>
               <option value={externalfacilitator[0].id}>{externalfacilitator[0].name}</option>
               {
@@ -208,8 +206,24 @@ function EditCertificate() {
             </select>
           </label>
 
-          <button type="submit">Add Certificate</button>
+          <button className="submitbtn" type="submit">UPDATE</button>
         </form>
+        <div className="form-title-sect">
+          <p className="form-title">
+            Edit
+            <br />
+            Certi-
+            <br />
+            ficate
+          </p>
+          <p className="form-title">
+            Edit
+            <br />
+            Certi-
+            <br />
+            ficate
+          </p>
+        </div>
       </div>
     );
   }

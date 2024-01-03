@@ -84,7 +84,7 @@ function Home() {
         <div className="title-btn">
           <NavLink className="deleteBtn" to="/addbatch">
             <FaPlus />
-            <span> &nbsp; Add new</span>
+            <span> &nbsp; New Batch</span>
           </NavLink>
           <button className="deleteBtn" type="submit" onClick={handleDelete}>
             <FaTrash />

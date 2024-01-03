@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { displayPersonnel, editPersonnel } from '../../redux/personnelSlice';
+import '../../stylesheets/forms.css';
 
 function EditPersonnel() {
   const dispatch = useDispatch();
@@ -61,11 +62,8 @@ function EditPersonnel() {
 
   if (personnel) {
     return (
-      <div>
-        <p>
-          Edit Personnel
-        </p>
-        <form onSubmit={handleSubmit}>
+      <div className="form-cont">
+        <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="name">
             Name:
             <input
@@ -80,7 +78,7 @@ function EditPersonnel() {
             />
           </label>
           <label htmlFor="signature">
-            signature:
+            Signature url:
             <input
               className="form-input"
               type="signature"
@@ -92,8 +90,17 @@ function EditPersonnel() {
               id="signature"
             />
           </label>
-          <button type="submit">Save</button>
+          <button className="submitbtn" type="submit">UPDATE</button>
         </form>
+        <div className="form-title-sect">
+          <p className="form-title">
+            Edit
+            <br />
+            Pers-
+            <br />
+            onnel
+          </p>
+        </div>
       </div>
     );
   }

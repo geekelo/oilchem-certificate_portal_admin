@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { FaEye, FaPen } from 'react-icons/fa';
 
 function EachBatch({ index, eachBatch, handleSelectedBatches }) {
   const isChecked = () => {
@@ -10,10 +11,19 @@ function EachBatch({ index, eachBatch, handleSelectedBatches }) {
   return (
     <div className="each-batch-sect">
       <div className="each-batch-cont">
-        <input
-          type="checkbox"
-          onChange={isChecked}
-        />
+        <div className="batch-select-cont">
+          <input
+            type="checkbox"
+            onChange={isChecked}
+          />
+          <NavLink
+            className="batch-edit"
+            to={`/editbatch/${eachBatch.id}`}
+          >
+            <FaPen />
+            &nbsp;Edit
+          </NavLink>
+        </div>
         <p className="batch-name">
           Batch &nbsp;
           {index + 1}
@@ -24,13 +34,11 @@ function EachBatch({ index, eachBatch, handleSelectedBatches }) {
           <p>-</p>
           <p>{eachBatch.end_date}</p>
         </div>
-        <NavLink
-          to={`/editbatch/${eachBatch.id}`}
-        >
-          Edit
-        </NavLink>
       </div>
-      <NavLink className="edit-btn view-btn" to={`/students/${eachBatch.id}`}>View </NavLink>
+      <NavLink className="edit-btn view-btn" to={`/students/${eachBatch.id}`}>
+        <FaEye />
+        &nbsp;View Students
+      </NavLink>
     </div>
   );
 }

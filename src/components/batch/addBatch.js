@@ -50,18 +50,15 @@ function AddBatch() {
   };
 
   return (
-    <div>
-      <p>
-        Create New Batch
-      </p>
+    <div className="form-cont">
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
-          Name:
+          Batch name:
           <input
             className="form-input"
             type="text"
             name="name"
-            placeholder="joe"
+            placeholder="Add preferred batch name"
             value={batchData.name}
             onChange={handleChange}
             required
@@ -69,7 +66,7 @@ function AddBatch() {
           />
         </label>
         <label htmlFor="start_date">
-          start date:
+          Start date:
           <input
             className="form-input"
             type="date"
@@ -82,7 +79,7 @@ function AddBatch() {
           />
         </label>
         <label htmlFor="end_date">
-          end date:
+          End date:
           <input
             className="form-input"
             type="date"
@@ -94,8 +91,11 @@ function AddBatch() {
             id="end_date"
           />
         </label>
-        <button type="submit">Add Batch</button>
+        <button className="submitbtn" type="submit">SUBMIT</button>
       </form>
+      <div className="form-title-sect">
+        <p className="form-title">Create New Batch</p>
+      </div>
     </div>
   );
 }

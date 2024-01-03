@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { displayBatches, editBatch } from '../../redux/batchSlice';
+import '../../stylesheets/forms.css';
 
 function EditBatch() {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ function EditBatch() {
       batchData,
       token,
     }));
-    navigate(-1);
+    navigate('/');
   };
 
   const handleChange = (e) => {
@@ -67,11 +68,8 @@ function EditBatch() {
   };
   if (batch) {
     return (
-      <div>
-        <p>
-          Edit Batch
-        </p>
-        <form onSubmit={handleSubmit}>
+      <div className="form-cont">
+        <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="name">
             Name:
             <input
@@ -86,7 +84,7 @@ function EditBatch() {
             />
           </label>
           <label htmlFor="start_date">
-            start date:
+            Start date:
             <input
               className="form-input"
               type="date"
@@ -99,7 +97,7 @@ function EditBatch() {
             />
           </label>
           <label htmlFor="end_date">
-            end date:
+            End date:
             <input
               className="form-input"
               type="date"
@@ -111,8 +109,11 @@ function EditBatch() {
               id="end_date"
             />
           </label>
-          <button type="submit">Save</button>
+          <button className="submitbtn" type="submit">UPDATE</button>
         </form>
+        <div className="form-title-sect">
+          <p className="form-title">Edit Batch Details</p>
+        </div>
       </div>
     );
   }

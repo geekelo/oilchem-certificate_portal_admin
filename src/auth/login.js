@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Navigate } from 'react-router-dom';
 import { loginUser } from '../redux/loginSlice';
+import '../stylesheets/forms.css';
 
 function Login() {
   const dispatch = useDispatch();
@@ -28,11 +29,8 @@ function Login() {
     return <Navigate to="/home" />;
   }
   return (
-    <div>
-      <p>
-        Login
-      </p>
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="email">
           Email:
           <input
@@ -59,12 +57,17 @@ function Login() {
             id="password"
           />
         </label>
-        <button type="submit">Login</button>
+        <button className="submitbtn" type="submit">LOGIN</button>
+        <p>
+          Don&apos;t have an account?
+          <NavLink to="/signup">Sign Up</NavLink>
+        </p>
       </form>
-      <p>
-        Don&apos;t have an account?
-        <NavLink to="/signup">Sign Up</NavLink>
-      </p>
+      <div className="form-title-sect">
+        <p className="form-title">
+          Login
+        </p>
+      </div>
     </div>
   );
 }

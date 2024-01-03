@@ -13,7 +13,7 @@
   box-shadow: 5px 5px 5px rgba(228, 228, 228, 0.438);
   background: linear-gradient(67deg,#97d6a3,#94c894,#174217);
   background-size: 180% 180%;
-  animation: gradient-animation 12s ease infinite;
+  animation: gradient-animation 5s ease infinite;
 }
 
 @keyframes gradient-animation {
@@ -45,3 +45,63 @@
   font-weight: 600;
   margin-bottom: 0;
 }
+
+.view-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.batch-select-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.batch-edit {
+  font-size: 0.7rem;
+  padding-right: 1.5rem;
+  text-decoration: underline;
+  color: rgba(8, 74, 40, 0.473);
+}
+
+.batch-cont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.each-batch-sect {
+  background-color: #fff;
+  border-radius: 18px;
+}
+
+.each-batch-cont {
+  width: 47vh;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem
+}
+
+.view-btn {
+  width: 100%;
+}
+
+.batch-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color:rgb(8, 74, 40);
+  margin-bottom: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.batch-date {
+  text-transform: uppercase;
+  display: flex;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+  color: rgba(8, 74, 40, 0.473);
+  font-weight: 800;
+  margin-bottom: -5px;
+}
+

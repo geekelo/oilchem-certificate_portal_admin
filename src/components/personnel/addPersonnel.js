@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addPersonnel } from '../../redux/personnelSlice';
+import '../../stylesheets/forms.css';
 
 function AddPersonnel() {
   const dispatch = useDispatch();
@@ -48,18 +49,15 @@ function AddPersonnel() {
   };
 
   return (
-    <div>
-      <p>
-        Add Personnel
-      </p>
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
           <input
             className="form-input"
             type="name"
             name="name"
-            placeholder="joe@mail.com"
+            placeholder="Input personnel name"
             value={personnelData.name}
             onChange={handleChange}
             required
@@ -67,20 +65,29 @@ function AddPersonnel() {
           />
         </label>
         <label htmlFor="signature">
-          signature:
+          Signature url:
           <input
             className="form-input"
             type="signature"
             name="signature"
-            placeholder="signature"
+            placeholder="Input signature url only"
             value={personnelData.signature}
             onChange={handleChange}
             required
             id="signature"
           />
         </label>
-        <button type="submit">Add Personnel</button>
+        <button className="submitbtn" type="submit">SUBMIT</button>
       </form>
+      <div className="form-title-sect">
+        <p className="form-title">
+          Add
+          <br />
+          Pers-
+          <br />
+          onnel
+        </p>
+      </div>
     </div>
   );
 }
