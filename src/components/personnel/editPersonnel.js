@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
 import { displayPersonnel, editPersonnel } from '../../redux/personnelSlice';
 import '../../stylesheets/forms.css';
@@ -60,6 +61,11 @@ function EditPersonnel() {
     }));
   };
 
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
+
   if (personnel) {
     return (
       <div className="form-cont">
@@ -101,6 +107,10 @@ function EditPersonnel() {
             onnel
           </p>
         </div>
+        <button className="goback" type="submit" onClick={goBack}>
+          <FaArrowLeft className="gobackicon" />
+          <p>&nbsp; Back</p>
+        </button>
       </div>
     );
   }

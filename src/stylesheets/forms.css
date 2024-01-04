@@ -75,3 +75,17 @@ select {
 .submitbtn:hover {
   opacity: 0.8;
 }
+
+.goback {
+  position: fixed;
+  top: 4vh;
+  left: 10%;
+  background-color: #ffffff00;
+  z-index: 2;
+  border: none;
+  font-size: 0;
+}
+
+.gobackicon {
+  font-size: 2rem;
+}

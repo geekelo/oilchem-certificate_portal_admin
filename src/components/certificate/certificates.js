@@ -7,6 +7,7 @@ import EachCertificate from './eachCertificate';
 import { displayPersonnel } from '../../redux/personnelSlice';
 import { displayStudents } from '../../redux/studentSlice';
 import '../../stylesheets/tables.css';
+import Spinner from '../../loaders/spinner';
 
 function Certificates() {
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ function Certificates() {
   const students = useSelector((state) => state.display_students.value);
   const [selectedCertificates, setSelectedCertificates] = useState([]);
   const [token, setToken] = useState('');
+  const [itemsToShow, setItemsToShow] = useState(3);
 
+  // VERIFY AUTHENTICATION
   useEffect(() => {
     const checkAuthentication = () => {
       const storedData = localStorage.getItem('oilchemAdmin');
@@ -37,6 +40,7 @@ function Certificates() {
     checkAuthentication();
   }, [navigate]);
 
+  // FETCH DATA
   useEffect(() => {
     const fetchdata = async () => {
       await dispatch(displayStudents(token));
@@ -52,6 +56,7 @@ function Certificates() {
     fetchdata();
   }, [dispatch, token]);
 
+  // HANDLE BULK DELETE
   const handleDelete = async (e) => {
     e.preventDefault();
     await Promise.all(
@@ -71,7 +76,21 @@ function Certificates() {
     }
   };
 
+  // HANDLE PAGINATION
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setItemsToShow(itemsToShow + 3);
+  };
+
+  const handleLoadLess = (e) => {
+    e.preventDefault();
+    setItemsToShow(Math.max(itemsToShow - 3, 3));
+  };
+
   if (certificateData.length > 0) {
+    const sortedCertificateData = [...certificateData].sort((a, b) => b.id - a.id);
+    const displayedCertificates = sortedCertificateData
+      .slice(0, itemsToShow);
     return (
       <div className="table-cont">
         <div className="topbar">
@@ -85,30 +104,43 @@ function Certificates() {
         </div>
         <div className="flex-container">
           {
-            [...certificateData]
-              .sort((a, b) => b.id - a.id)
+            [...displayedCertificates]
               .map((each, index) => (
                 <EachCertificate
                   key={each.id}
                   eachCertificate={each}
                   students={students}
                   personnels={personnels}
-                  index={certificateData.length - (index + 1)}
+                  index={index}
                   handleSelectedCertificates={handleSelectedCertificates}
                 />
               ))
           }
+        </div>
+        <div className="load-more-container">
+          {itemsToShow < certificateData.length && (
+            <button type="submit" className="paginate" onClick={handleLoadMore}>
+              Load More ▼
+            </button>
+          )}
+          {itemsToShow > 3 && (
+            <button type="submit" className="paginate" onClick={handleLoadLess}>
+              Load Less ▲
+            </button>
+          )}
         </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <div>
-        <button type="submit" onClick={handleDelete}>Delete</button>
+    <div className="table-cont">
+      <div className="topbar">
+        <p className="title">Certificates</p>
       </div>
-      <p>No data available. Loading...</p>
+      <div className="flex-container">
+        <Spinner />
+      </div>
     </div>
   );
 }

@@ -8,6 +8,18 @@ function EachBatch({ index, eachBatch, handleSelectedBatches }) {
     handleSelectedBatches(eachBatch.id);
   };
 
+  const formatDate = (inputDate) => {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
+    const [year, month, day] = inputDate.split('-');
+    const monthAbbreviation = months[parseInt(month, 10) - 1];
+
+    return `${parseInt(day, 10)} ${monthAbbreviation}, ${year}`;
+  };
+
   return (
     <div className="each-batch-sect">
       <div className="each-batch-cont">
@@ -30,9 +42,9 @@ function EachBatch({ index, eachBatch, handleSelectedBatches }) {
         </p>
         <p className="batch-date">{eachBatch.name}</p>
         <div className="batch-date">
-          <p>{eachBatch.start_date}</p>
-          <p>-</p>
-          <p>{eachBatch.end_date}</p>
+          <p>{formatDate(eachBatch.start_date)}</p>
+          <p>&nbsp;-&nbsp;</p>
+          <p>{formatDate(eachBatch.end_date)}</p>
         </div>
       </div>
       <NavLink className="edit-btn view-btn" to={`/students/${eachBatch.id}`}>

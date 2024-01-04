@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { displayStudents, editStudent } from '../../redux/studentSlice';
 import '../../stylesheets/forms.css';
 
@@ -62,6 +63,11 @@ function EditStudent() {
     }));
   };
 
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
+
   if (student) {
     return (
       <div className="form-cont">
@@ -90,6 +96,10 @@ function EditStudent() {
             dent
           </p>
         </div>
+        <button className="goback" type="submit" onClick={goBack}>
+          <FaArrowLeft className="gobackicon" />
+          <p>&nbsp; Back</p>
+        </button>
       </div>
     );
   }

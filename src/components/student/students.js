@@ -6,6 +6,7 @@ import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
 import { displayCertificates } from '../../redux/certificateSlice';
 import '../../stylesheets/tables.css';
+import Spinner from '../../loaders/spinner';
 
 function Students() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Students() {
   const [selectedStudents, setSelectedStudents] = useState([]);
   const location = useLocation();
   const batchId = location.pathname.split('/').pop();
+  const [itemsToShow, setItemsToShow] = useState(12);
 
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
@@ -59,9 +61,24 @@ function Students() {
     }
   };
 
+  // HANDLE PAGINATION
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setItemsToShow(itemsToShow + 12);
+  };
+
+  const handleLoadLess = (e) => {
+    e.preventDefault();
+    setItemsToShow(Math.max(itemsToShow - 12, 12));
+  };
+
   const batchStudents = students.filter((each) => each.batch_id === Number(batchId));
   const screenedCertificates = certificates.map((each) => each.student_id);
   if (batchStudents.length > 0) {
+    const sortedBatchStudents = [...batchStudents].sort((a, b) => b.id - a.id);
+    const displayedBatchStudents = sortedBatchStudents
+      .slice(0, itemsToShow);
+
     return (
       <div className="table-cont">
         <div className="topbar">
@@ -79,12 +96,12 @@ function Students() {
         </div>
         <div className="flex-container">
           {
-            [...batchStudents]
+            [...displayedBatchStudents]
               .sort((a, b) => b.id - a.id)
               .map((each, index) => (
                 <EachStudent
                   key={each.id}
-                  index={batchStudents.length - (index + 1)}
+                  index={index}
                   eachStudent={each}
                   handleSelectedStudents={handleSelectedStudents}
                   certificates={screenedCertificates}
@@ -92,19 +109,38 @@ function Students() {
               ))
           }
         </div>
+        <div className="load-more-container">
+          {itemsToShow < sortedBatchStudents.length && (
+            <button type="submit" className="paginate" onClick={handleLoadMore}>
+              Load More ▼
+            </button>
+          )}
+          {itemsToShow > 12 && (
+            <button type="submit" className="paginate" onClick={handleLoadLess}>
+              Load Less ▲
+            </button>
+          )}
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <div>
-        <NavLink to={`/addstudent/${batchId}`}>Add </NavLink>
-        <button type="submit" onClick={handleDelete}>Delete</button>
+    <div className="table-cont">
+      <div className="topbar">
+        <p className="title">Students</p>
+        <div className="title-btn">
+          <NavLink className="deleteBtn" to={`/addstudent/${batchId}`}>
+            <FaPlus />
+            <span> &nbsp; Add new</span>
+          </NavLink>
+        </div>
       </div>
-      <p>No student to display yet. Loading...</p>
+      <div className="flex-container">
+        <Spinner />
+      </div>
     </div>
-  ); // Return null if students.length <= 0
+  );
 }
 
 export default Students;

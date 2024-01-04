@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { FaArrowLeft } from 'react-icons/fa';
 import { addStudent } from '../../redux/studentSlice';
 import '../../stylesheets/forms.css';
 
@@ -56,6 +57,11 @@ function AddStudent() {
     }));
   };
 
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="form-cont">
       <form className="form" onSubmit={handleSubmit}>
@@ -83,6 +89,10 @@ function AddStudent() {
           dent
         </p>
       </div>
+      <button className="goback" type="submit" onClick={goBack}>
+        <FaArrowLeft className="gobackicon" />
+        <p>&nbsp; Back</p>
+      </button>
     </div>
   );
 }

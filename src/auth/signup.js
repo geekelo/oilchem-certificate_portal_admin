@@ -33,11 +33,8 @@ function Signup() {
   }
 
   return (
-    <div>
-      <p>
-        Sign Up
-      </p>
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="username">
           Username:
           <input
@@ -91,12 +88,19 @@ function Signup() {
             id="password_confirmation"
           />
         </label>
-        <button type="submit">Login</button>
+        <button className="submitbtn" type="submit">CREATE</button>
+        <p>
+          Already have an account?
+          <NavLink to="/login">Login</NavLink>
+        </p>
       </form>
-      <p>
-        Already have an account?
-        <NavLink to="/login">Login</NavLink>
-      </p>
+      <div className="form-title-sect">
+        <p className="form-title">
+          Sign-
+          <br />
+          Up
+        </p>
+      </div>
     </div>
   );
 }

@@ -48,7 +48,8 @@
   justify-content: flex-end;
 }
 
-.deleteBtn {
+.deleteBtn,
+.paginate {
   border: 1px solid rgb(17, 57, 44);
   background-color: #fff;
   color: rgb(17, 57, 44);
@@ -63,7 +64,14 @@
   justify-content: center;
 }
 
-.deleteBtn:hover {
+.paginate {
+  margin: auto;
+  margin-top: 2rem;
+  width: 40%;
+}
+
+.deleteBtn:hover,
+.paginate:hover {
   background-color: rgb(17, 57, 44);
   color: #fff;
 }

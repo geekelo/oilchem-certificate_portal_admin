@@ -22,6 +22,18 @@ function EachCertificate({
     handleSelectedCertificates(eachCertificate.id);
   };
 
+  const formatDate = (inputDate) => {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
+    const [year, month, day] = inputDate.split('-');
+    const monthAbbreviation = months[parseInt(month, 10) - 1];
+
+    return `${parseInt(day, 10)} ${monthAbbreviation}, ${year}`;
+  };
+
   return (
     <div>
       <header className="table-header">
@@ -61,11 +73,11 @@ function EachCertificate({
         <div className="duration">
           <div>
             <p><b>Start date:</b></p>
-            {eachCertificate.start_date}
+            {formatDate(eachCertificate.start_date)}
           </div>
           <div>
             <p><b>End date:</b></p>
-            {eachCertificate.end_date}
+            {formatDate(eachCertificate.end_date)}
           </div>
         </div>
         <div className="personnel">

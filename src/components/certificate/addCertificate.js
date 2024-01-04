@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { addCertificate } from '../../redux/certificateSlice';
 import { displayPersonnel } from '../../redux/personnelSlice';
 import '../../stylesheets/forms.css';
@@ -68,6 +69,11 @@ function AddCertificate() {
     };
     fetchdata();
   }, [token]);
+
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="form-cont">
@@ -202,6 +208,10 @@ function AddCertificate() {
           ficate
         </p>
       </div>
+      <button className="goback" type="submit" onClick={goBack}>
+        <FaArrowLeft className="gobackicon" />
+        <p>&nbsp; Back</p>
+      </button>
     </div>
   );
 }

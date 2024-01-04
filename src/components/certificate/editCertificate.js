@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { displayCertificates, editCertificate } from '../../redux/certificateSlice';
 import { displayPersonnel } from '../../redux/personnelSlice';
 import '../../stylesheets/forms.css';
@@ -37,6 +38,11 @@ function EditCertificate() {
   }, [dispatch]);
 
   const [certificateData, setCertificateData] = useState({});
+
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -224,6 +230,10 @@ function EditCertificate() {
             ficate
           </p>
         </div>
+        <button className="goback" type="submit" onClick={goBack}>
+          <FaArrowLeft className="gobackicon" />
+          <p>&nbsp; Back</p>
+        </button>
       </div>
     );
   }

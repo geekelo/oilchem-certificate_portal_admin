@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa';
 import { addBatch } from '../../redux/batchSlice';
 import '../../stylesheets/forms.css';
 
@@ -47,6 +48,11 @@ function AddBatch() {
       ...batchData,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
   };
 
   return (
@@ -96,6 +102,10 @@ function AddBatch() {
       <div className="form-title-sect">
         <p className="form-title">Create New Batch</p>
       </div>
+      <button className="goback" type="submit" onClick={goBack}>
+        <FaArrowLeft className="gobackicon" />
+        <p>&nbsp; Back</p>
+      </button>
     </div>
   );
 }

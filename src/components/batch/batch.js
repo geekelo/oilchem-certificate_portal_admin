@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaTrash, FaPlus } from 'react-icons/fa';
-import { displayPersonnel, deletePersonnel } from '../../redux/personnelSlice';
-import EachPersonnel from './eachPersonnel';
-import '../../stylesheets/tables.css';
+import { displayBatches, deleteBatch } from '../../redux/batchSlice';
+import EachBatch from './eachBatch';
+import '../../stylesheets/home.css';
 import Spinner from '../../loaders/spinner';
 
-function Personnel() {
+function Batch() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const personnels = useSelector((state) => state.display_personnel.value);
+  const batches = useSelector((state) => state.display_batches.value) || [];
   const [token, setToken] = useState('');
-  const [selectedPersonnel, setSelectedPersonnel] = useState([]);
+  const [selectedBatches, setSelectedBatches] = useState([]);
   const [itemsToShow, setItemsToShow] = useState(12);
 
-  // VERIFY AUTHENTICATION
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
     if (storedData) {
@@ -24,40 +23,37 @@ function Personnel() {
         localStorage.removeItem('oilchemAdmin');
         navigate('/login');
       } else {
-        const tokenData = parsedData.extractedUserData.token;
-        setToken(tokenData);
+        setToken(parsedData.extractedUserData.token);
       }
     } else {
       navigate('/login');
     }
   };
 
-  // HANDLE BULK DELETE
   const handleDelete = async (e) => {
     e.preventDefault();
     await Promise.all(
-      selectedPersonnel.map((each) => dispatch(deletePersonnel({ id: each, token }))),
+      selectedBatches.map((each) => dispatch(deleteBatch({ id: each, token }))),
     );
 
-    await dispatch(displayPersonnel(token));
+    await dispatch(displayBatches(token));
   };
 
-  const handleSelectedPersonnel = (param) => {
-    if (selectedPersonnel.includes(param)) {
-      setSelectedPersonnel((selectedPersonnel) => {
-        const updatedPersonnel = selectedPersonnel.filter((personnel) => personnel !== param);
-        return updatedPersonnel;
-      });
-    } else {
-      setSelectedPersonnel([...selectedPersonnel, param]);
-    }
-  };
-
-  // FETCH DATA
   useEffect(() => {
     checkAuthentication();
-    dispatch(displayPersonnel(token));
+    dispatch(displayBatches(token));
   }, [token]);
+
+  const handleSelectedBatches = (param) => {
+    if (selectedBatches.includes(param)) {
+      setSelectedBatches((selectedBatches) => {
+        const updatedBatches = selectedBatches.filter((batch) => batch !== param);
+        return updatedBatches;
+      });
+    } else {
+      setSelectedBatches([...selectedBatches, param]);
+    }
+  };
 
   // HANDLE PAGINATION
   const handleLoadMore = (e) => {
@@ -70,19 +66,19 @@ function Personnel() {
     setItemsToShow(Math.max(itemsToShow - 12, 12));
   };
 
-  if (personnels.length > 0) {
-    const personnel = [...personnels].sort((a, b) => b.id - a.id);
-    const displayedPersonnel = personnel
+  if (batches.length > 0) {
+    const sortedBatches = [...batches].sort((a, b) => b.id - a.id);
+    const displayedBatches = sortedBatches
       .slice(0, itemsToShow);
 
     return (
-      <div className="table-cont">
+      <div className="homecont">
         <div className="topbar">
-          <p className="title">Personnel</p>
+          <p className="title">Batches</p>
           <div className="title-btn">
-            <NavLink className="deleteBtn" to="/addpersonnel">
+            <NavLink className="deleteBtn" to="/addbatch">
               <FaPlus />
-              <span> &nbsp; Add new</span>
+              <span> &nbsp; New Batch</span>
             </NavLink>
             <button className="deleteBtn" type="submit" onClick={handleDelete}>
               <FaTrash />
@@ -90,21 +86,22 @@ function Personnel() {
             </button>
           </div>
         </div>
-        <div className="flex-container">
+        <form className="batch-cont">
           {
-            [...displayedPersonnel]
+            [...displayedBatches]
+              .sort((a, b) => b.id - a.id)
               .map((each, index) => (
-                <EachPersonnel
+                <EachBatch
                   key={each.id}
-                  index={index}
-                  eachPersonnel={each}
-                  handleSelectedPersonnel={handleSelectedPersonnel}
+                  index={batches.length - (index + 1)}
+                  eachBatch={each}
+                  handleSelectedBatches={handleSelectedBatches}
                 />
               ))
           }
-        </div>
+        </form>
         <div className="load-more-container">
-          {itemsToShow < personnel.length && (
+          {itemsToShow < sortedBatches.length && (
             <button type="submit" className="paginate" onClick={handleLoadMore}>
               Load More ▼
             </button>
@@ -118,23 +115,22 @@ function Personnel() {
       </div>
     );
   }
-
   return (
-    <div className="table-cont">
+    <div className="homecont">
       <div className="topbar">
-        <p className="title">Personnel</p>
+        <p className="title">Batches</p>
         <div className="title-btn">
-          <NavLink className="deleteBtn" to="/addpersonnel">
+          <NavLink className="deleteBtn" to="/addbatch">
             <FaPlus />
-            <span> &nbsp; Add new</span>
+            <span> &nbsp; New Batch</span>
           </NavLink>
         </div>
       </div>
-      <div className="flex-container">
+      <form className="batch-cont">
         <Spinner />
-      </div>
+      </form>
     </div>
   );
 }
 
-export default Personnel;
+export default Batch;

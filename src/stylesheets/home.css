@@ -88,7 +88,7 @@
 }
 
 .batch-name {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color:rgb(8, 74, 40);
   margin-bottom: 0;
@@ -103,5 +103,6 @@
   color: rgba(8, 74, 40, 0.473);
   font-weight: 800;
   margin-bottom: -5px;
+  font-family: 'Lato', sans-serif;
 }
 
