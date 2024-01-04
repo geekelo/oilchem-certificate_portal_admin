@@ -18,7 +18,7 @@
   border-left: 13px solid rgb(17, 57, 44);
   padding: 1rem 0;
   padding-left: 1rem;
-  width: 50%;
+  width: 40%;
   background-color: #0c340111;
   border-image: linear-gradient(to bottom, aquamarine, rgb(17, 57, 44));
   border-image-slice: 1;
@@ -40,6 +40,18 @@
 .student-select {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.certificate-created {
+  border-bottom: 1px dotted #5c5c5c;
+  padding-bottom: 0.1rem;
+  color: #5c5c5c;
+  text-decoration: none;
+}
+
+.certificate-created:hover {
+  color: #5c5c5c76;
+  border-bottom: 1px dotted #5c5c5c76;
 }
 
 .title-btn {
@@ -68,6 +80,34 @@
   margin: auto;
   margin-top: 2rem;
   width: 40%;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+}
+
+.search-bar {
+  width: 50%;
+  padding: 1rem;
+  border-radius: none;
+}
+
+.searchbtn {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid rgb(23, 23, 23);
+  border-left: none;
+  color: #fff;
+  background-color: rgb(17, 57, 44);;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.searchbtn:hover {
+  border-color: rgba(17, 57, 44, 0.75);
+  background-color: rgba(17, 57, 44, 0.75);
 }
 
 .deleteBtn:hover,

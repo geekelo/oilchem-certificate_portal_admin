@@ -8,16 +8,20 @@ function EachCertificate({
   eachCertificate,
   students,
   personnels,
+  batches,
   handleSelectedCertificates,
   index,
 }) {
-  const currStudent = students.filter((each) => each.id === eachCertificate.student_id);
+  const currStudent = students.filter((each) => each.id === eachCertificate.student_id) || [];
   const director = personnels.filter((each) => each.id === eachCertificate.training_director_id);
   const instructor = personnels.filter((e) => e.id === eachCertificate.training_instructor_id);
   const facilitator = personnels.filter((e) => e.id === eachCertificate.external_facilitator_id);
   const studentName = currStudent[0].name || '';
   const studentNumber = currStudent[0].unique_number || '';
+  const currStudentBatch = batches.filter((e) => currStudent[0].batch_id === e.id);
+  const studentBatch = currStudentBatch[0].name;
 
+  console.log(studentBatch);
   const isChecked = () => {
     handleSelectedCertificates(eachCertificate.id);
   };
@@ -68,6 +72,10 @@ function EachCertificate({
           <div>
             <p><b>Certificate Number:</b></p>
             {studentNumber}
+          </div>
+          <div>
+            <p><b>Batch Name:</b></p>
+            {studentBatch}
           </div>
         </div>
         <div className="duration">
@@ -129,6 +137,13 @@ EachCertificate.propTypes = {
     }),
   ).isRequired,
   personnels: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      // Add more properties if needed
+    }),
+  ).isRequired,
+  batches: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
