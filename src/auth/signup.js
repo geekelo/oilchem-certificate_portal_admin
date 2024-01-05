@@ -40,7 +40,7 @@ function Signup() {
           <input
             className="form-input"
             type="text"
-            name="text"
+            name="username"
             placeholder="username"
             value={userData.username}
             onChange={handleChange}
@@ -95,6 +95,11 @@ function Signup() {
         </p>
       </form>
       <div className="form-title-sect">
+        <p className="form-title">
+          Sign-
+          <br />
+          Up
+        </p>
         <p className="form-title">
           Sign-
           <br />
