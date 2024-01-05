@@ -13,7 +13,7 @@ export const displayCertificates = createAsyncThunk(
   'user/display_certificates',
   async (token) => {
     try {
-      const response = await fetch('http://localhost:2000/api/v1/certificates', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const displayCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateId, token } = payload;
     try {
-      const response = await fetch(`http://localhost:2000/api/v1/certificates/${certificateId}`, {
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/certificates/${certificateId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export const deleteCertificate = createAsyncThunk(
 
     try {
       const response = await fetch(
-        `http://localhost:2000/api/v1/certificates/${id}`,
+        `hhttps://oilchem-api.onrender.com/api/v1/certificates/${id}`,
         {
           method: 'DELETE',
           headers: {
@@ -89,7 +89,7 @@ export const addCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateData, token } = payload;
     try {
-      const response = await fetch('http://localhost:2000/api/v1/certificates', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ export const editCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateId, certificateData, token } = payload;
     try {
-      const response = await fetch(`http://localhost:2000/api/v1/certificates/${certificateId}`, {
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/certificates/${certificateId}`, {
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',

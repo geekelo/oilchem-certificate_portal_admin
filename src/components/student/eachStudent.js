@@ -54,7 +54,7 @@ function EachStudent({
           : (
             <p className="student-action">
               <span className="id-text">✔</span>
-              <NavLink className="certificate-created" to={`/certificate#${eachStudent.id}`}>
+              <NavLink className="certificate-created" to={`/certificate/${eachStudent.id}`}>
                 &nbsp;Certificate Created
                 <sup>➹</sup>
               </NavLink>

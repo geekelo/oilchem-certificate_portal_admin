@@ -26,7 +26,7 @@ function EachPersonnel({ index, eachPersonnel, handleSelectedPersonnel }) {
             onChange={isChecked}
           />
         </div>
-        <p className="personnel-name">{eachPersonnel.name}</p>
+        <p className="personnel-name"><b>{eachPersonnel.name}</b></p>
         <img className="personnel-signature" src={eachPersonnel.signature} alt="personnel" width="50" />
       </div>
       <NavLink className="personnel-edit-btn" to={`/editpersonnel/${eachPersonnel.id}`}>

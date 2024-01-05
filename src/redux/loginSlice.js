@@ -12,7 +12,7 @@ export const loginUser = createAsyncThunk(
   'user/login_user',
   async (userData) => {
     try {
-      const response = await fetch('http://localhost:2000/api/v1/login', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

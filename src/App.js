@@ -21,6 +21,9 @@ import EditBatch from './components/batch/editBatch';
 import EditCertificate from './components/certificate/editCertificate';
 import EditPersonnel from './components/personnel/editPersonnel';
 import EditStudent from './components/student/editStudent';
+import Certificate from './components/certificate/detailsCertificate';
+import Student from './components/student/detailsStudent';
+import NotFound from './components/notFound';
 
 function App() {
   return (
@@ -46,6 +49,9 @@ function App() {
               <Route path="/editcertificate/:id" element={<EditCertificate />} />
               <Route path="/editpersonnel/:id" element={<EditPersonnel />} />
               <Route path="/editstudent/:id" element={<EditStudent />} />
+              <Route path="/certificate/:id" element={<Certificate />} />
+              <Route path="/student/:id" element={<Student />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </div>
