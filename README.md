@@ -1,71 +1,132 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
+</div>
 
-## Available Scripts
+The `CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the content management system for a certificate portal web application. It provides an admin interface and interacts with the Rails Backend API only app to display content and manage data. This CMS is functional, easy to use and navigate. Admins can create  students, certificates, trainning personnel etc.
 
-In the project directory, you can run:
+The aim of this project is to provide a effective  solution to enable the Oilchem Mud School digitally create, manage and verify certificates for their graduated students 📚
 
-### `npm start`
+This project comprises of -
+- Rails Backend API only App - manages postgresql database and CRUD methods
+- React CMS - provides user interfaces to admins for effective cotent management
+- React Certificate Verification Portal - provides an interface for students to check the availability and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠 Built With <a name="built-with"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  <ul>
+    <li>React</li>
+    <li>Redux</li>
+    <li>CSS</li>
+  </ul>
 
-### `npm test`
+<!-- Features -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Key Features <a name="key-features"></a>
 
-### `npm run build`
+- [x] **React-Based User Interface**
+- [x] **Modular Structure**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Backend Project:
+  [Final-capstone-back-end](https://github.com/geekelo/fenaj-schedula_API)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Kanban Board:
+[Kanban-board](https://github.com/users/geekelo/projects/4)<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Team:
+We are a 5-member team.
 
-### `npm run eject`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Demo Link:
+  [Demo Link]()
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To get a local copy up and running, follow these steps.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
+In order to run this project you need:
+  * A basic understanding of React, Redux and Git
+### Usage
+1. Clone this repo
+2. Run npm install
+```
+git clone https://github.com/geekelo/oilchem-certificate_portal_admin.git
+```
 
-## Learn More
+To run the project, execute the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+  npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Code Splitting
+<!-- AUTHORS -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 👥 Authors <a name="authors"></a>
 
-### Analyzing the Bundle Size
+👤 **Eloghene Otiede**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- GitHub: [@geekelo](https://github.com/geekelo)
+- LinkedIn: [eloghene-otiede](https://www.linkedin.com/in/eloghene-otiede-b146a3232/)
 
-### Making a Progressive Web App
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- FUTURE FEATURES -->
 
-### Advanced Configuration
+## 🔭 Future Features <a name="future-features"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [ ] **Edit Admin Profile**
+- [ ] **Super Admin management**
 
-### Deployment
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- CONTRIBUTING -->
 
-### `npm run build` fails to minify
+## 🤝 Contributing <a name="contributing"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# oilchem-certificate_portal_admin
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+Please support this project and be a part of something meaningful and impactful. Your contribution can make a significant difference and help us achieve our goals faster.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to express my sincere gratitude to [Eloti Designs](https://elotidesigns.com) for trsting my competence in executing this project for their client OILCHEM MUD SCHOOL
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## :question: FAQ <a name="faq"></a>
+
+- **Can I fork and reuse this repository?**
+
+Absolutely! Please feel free to fork and reuse this repository for your own projects.
+
+- **Is it okay to improve this repository? Will my changes be accepted?**
+
+Definitely! We welcome any improvements or new ideas you may have. If your changes are good and align with the project's goals, we would be happy to accept them.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENCE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
