@@ -13,7 +13,11 @@ export const displayCertificates = createAsyncThunk(
   'user/display_certificates',
   async (token) => {
     try {
+<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/certificates', {
+=======
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
+>>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +42,11 @@ export const displayCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateId, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/certificates/${certificateId}`, {
+=======
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/certificates/${certificateId}`, {
+>>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +73,11 @@ export const deleteCertificate = createAsyncThunk(
 
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `https://oilchem-api-prod.onrender.com/api/v1/certificates/${id}`,
+=======
+        `hhttps://oilchem-api.onrender.com/api/v1/certificates/${id}`,
+>>>>>>> dev-deploy
         {
           method: 'DELETE',
           headers: {
@@ -89,7 +101,11 @@ export const addCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateData, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/certificates', {
+=======
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
+>>>>>>> dev-deploy
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +131,11 @@ export const editCertificate = createAsyncThunk(
   async (payload) => {
     const { certificateId, certificateData, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/certificates/${certificateId}`, {
+=======
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/certificates/${certificateId}`, {
+>>>>>>> dev-deploy
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',

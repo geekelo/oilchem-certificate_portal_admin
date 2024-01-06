@@ -21,7 +21,6 @@ function EachCertificate({
   const currStudentBatch = batches.filter((e) => currStudent[0].batch_id === e.id);
   const studentBatch = currStudentBatch[0].name;
 
-  console.log(studentBatch);
   const isChecked = () => {
     handleSelectedCertificates(eachCertificate.id);
   };
@@ -66,8 +65,11 @@ function EachCertificate({
         <p className="purpose">{eachCertificate.purpose}</p>
         <div className="student">
           <div>
-            <p><b>Student Number:</b></p>
-            {studentName}
+            <p><b>Student Name:</b></p>
+            <NavLink className="certificate-created" to={`/student/${eachCertificate.student_id}`}>
+              {studentName}
+              <sup>➹</sup>
+            </NavLink>
           </div>
           <div>
             <p><b>Certificate Number:</b></p>
@@ -75,7 +77,10 @@ function EachCertificate({
           </div>
           <div>
             <p><b>Batch Name:</b></p>
-            {studentBatch}
+            <NavLink className="certificate-created" to={`/students/${currStudentBatch[0].id}`}>
+              {studentBatch}
+              <sup>➹</sup>
+            </NavLink>
           </div>
         </div>
         <div className="duration">

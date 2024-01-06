@@ -29,13 +29,13 @@ function Navbar() {
         <AiFillHome className="menu-icon" />
         <span>Home</span>
       </NavLink>
-      <NavLink className="menu-item" to="/personnel">
-        <FaUsers className="menu-icon" />
-        <span>Personnel</span>
-      </NavLink>
       <NavLink className="menu-item" to="/certificates">
         <GiGraduateCap className="menu-icon" />
         <span>Certificates</span>
+      </NavLink>
+      <NavLink className="menu-item" to="/personnel">
+        <FaUsers className="menu-icon" />
+        <span>Personnel</span>
       </NavLink>
       <button className="menu-item" type="submit" onClick={handleSignout}>
         <AiOutlineUser className="menu-icon" />

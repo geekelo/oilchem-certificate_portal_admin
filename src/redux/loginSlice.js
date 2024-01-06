@@ -12,7 +12,11 @@ export const loginUser = createAsyncThunk(
   'user/login_user',
   async (userData) => {
     try {
+<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/login', {
+=======
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/login', {
+>>>>>>> dev-deploy
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaTrash, FaPlus } from 'react-icons/fa';
+import { FaTrash, FaPlus, FaArrowLeft } from 'react-icons/fa';
 import { deleteStudent, displayStudents } from '../../redux/studentSlice';
 import EachStudent from './eachStudent';
 import { displayCertificates } from '../../redux/certificateSlice';
 import '../../stylesheets/tables.css';
 import Spinner from '../../loaders/spinner';
 
-function Students() {
+function Student() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const students = useSelector((state) => state.display_students.value);
@@ -17,7 +17,6 @@ function Students() {
   const [selectedStudents, setSelectedStudents] = useState([]);
   const location = useLocation();
   const batchId = location.pathname.split('/').pop();
-  const [itemsToShow, setItemsToShow] = useState(12);
 
   // VERIFY AUTHENTICITY
   const checkAuthentication = () => {
@@ -36,6 +35,12 @@ function Students() {
     }
   };
 
+  // HANDLE GO BACK
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  // HANDLE DELETE
   const handleDelete = async (e) => {
     e.preventDefault();
     await Promise.all(
@@ -62,33 +67,14 @@ function Students() {
     }
   };
 
-  // HANDLE PAGINATION
-  const handleLoadMore = (e) => {
-    e.preventDefault();
-    setItemsToShow(itemsToShow + 12);
-  };
-
-  const handleLoadLess = (e) => {
-    e.preventDefault();
-    setItemsToShow(Math.max(itemsToShow - 12, 12));
-  };
-
-  const batchStudents = students.filter((each) => each.batch_id === Number(batchId));
+  const batchStudents = students.filter((each) => each.id === Number(batchId));
   const screenedCertificates = certificates.map((each) => each.student_id);
   if (batchStudents.length > 0) {
-    const sortedBatchStudents = [...batchStudents].sort((a, b) => b.id - a.id);
-    const displayedBatchStudents = sortedBatchStudents
-      .slice(0, itemsToShow);
-
     return (
       <div className="table-cont">
         <div className="topbar">
           <p className="title">Students</p>
           <div className="title-btn">
-            <NavLink className="deleteBtn" to={`/addstudent/${batchId}`}>
-              <FaPlus />
-              <span> &nbsp; Add new</span>
-            </NavLink>
             <button className="deleteBtn" type="submit" onClick={handleDelete}>
               <FaTrash />
               <span> &nbsp; Bulk Delete</span>
@@ -96,32 +82,18 @@ function Students() {
           </div>
         </div>
         <div className="flex-container">
-          {
-            [...displayedBatchStudents]
-              .sort((a, b) => b.id - a.id)
-              .map((each, index) => (
-                <EachStudent
-                  key={each.id}
-                  index={index}
-                  eachStudent={each}
-                  handleSelectedStudents={handleSelectedStudents}
-                  certificates={screenedCertificates}
-                />
-              ))
-          }
+          <EachStudent
+            key={batchId}
+            index={1}
+            eachStudent={batchStudents[0]}
+            handleSelectedStudents={handleSelectedStudents}
+            certificates={screenedCertificates}
+          />
         </div>
-        <div className="load-more-container">
-          {itemsToShow < sortedBatchStudents.length && (
-            <button type="submit" className="paginate" onClick={handleLoadMore}>
-              Load More ▼
-            </button>
-          )}
-          {itemsToShow > 12 && (
-            <button type="submit" className="paginate" onClick={handleLoadLess}>
-              Load Less ▲
-            </button>
-          )}
-        </div>
+        <button className="goback" type="submit" onClick={goBack}>
+          <FaArrowLeft className="gobackicon" />
+          <p>&nbsp; Back</p>
+        </button>
       </div>
     );
   }
@@ -144,4 +116,4 @@ function Students() {
   );
 }
 
-export default Students;
+export default Student;

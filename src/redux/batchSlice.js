@@ -13,7 +13,11 @@ export const displayBatches = createAsyncThunk(
   'user/display_batches',
   async (token) => {
     try {
+<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/batches', {
+=======
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/batches', {
+>>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +42,11 @@ export const displayBatch = createAsyncThunk(
   async (payload) => {
     const { batchId, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/batches/${batchId}`, {
+=======
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/batches/${batchId}`, {
+>>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +73,11 @@ export const deleteBatch = createAsyncThunk(
 
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `https://oilchem-api-prod.onrender.com/api/v1/batches/${id}`,
+=======
+        `https://oilchem-api.onrender.com/api/v1/batches/${id}`,
+>>>>>>> dev-deploy
         {
           method: 'DELETE',
           headers: {
@@ -89,7 +101,11 @@ export const addBatch = createAsyncThunk(
   async (payload) => {
     const { batchData, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/batches', {
+=======
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/batches', {
+>>>>>>> dev-deploy
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +131,11 @@ export const editBatch = createAsyncThunk(
   async (payload) => {
     const { batchId, batchData, token } = payload;
     try {
+<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/batches/${batchId}`, {
+=======
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/batches/${batchId}`, {
+>>>>>>> dev-deploy
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',
