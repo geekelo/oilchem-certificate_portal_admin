@@ -26,6 +26,7 @@ function AddCertificate() {
     external_facilitator_id: 0,
   });
 
+  // VERIFY AUTHENTICATION
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
     if (storedData) {
@@ -45,6 +46,7 @@ function AddCertificate() {
     checkAuthentication();
   }, [dispatch]);
 
+  // POST DATA
   const handleSubmit = async (e) => {
     e.preventDefault();
     const storedData = localStorage.getItem('oilchemAdmin');
@@ -56,6 +58,7 @@ function AddCertificate() {
     navigate(-1);
   };
 
+  // UPDATE DATA
   const handleChange = (e) => {
     setCertificateData((certificateData) => ({
       ...certificateData,

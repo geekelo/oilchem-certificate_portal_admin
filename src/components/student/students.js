@@ -19,6 +19,7 @@ function Students() {
   const batchId = location.pathname.split('/').pop();
   const [itemsToShow, setItemsToShow] = useState(12);
 
+  // VERIFY AUTHENTICITY
   const checkAuthentication = () => {
     const storedData = localStorage.getItem('oilchemAdmin');
     if (storedData) {
