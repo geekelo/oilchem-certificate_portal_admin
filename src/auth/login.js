@@ -58,16 +58,6 @@ function Login() {
           />
         </label>
         <button className="submitbtn" type="submit">LOGIN</button>
-        <p>
-          Don&apos;t have an account?&nbsp;
-          <NavLink to="/signup">Sign Up</NavLink>
-        </p>
-      </form>
-      <div className="form-title-sect">
-        <p className="form-title">
-          Login
-        </p>
-      </div>
     </div>
   );
 }
