@@ -20,10 +20,10 @@
   - [💻 Getting Started ](#-getting-started-)
     - [Setup ](#setup-)
     - [Prerequisites ](#prerequisites-)
-    - [Install ](#install-)
+    <!-- - [Install ](#install-) -->
     - [Usage ](#usage-)
-    - [Run Tests ](#run-tests-)
-    - [Deployment ](#deployment-)
+    <!-- - [Run Tests ](#run-tests-)
+    - [Deployment ](#deployment-) -->
   - [👥 Authors ](#-authors-)
   - [🤝 Contributing ](#-contributing-)
   - [Future Features ](#future-features-)
@@ -47,9 +47,9 @@ This project comprises of -
 - [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-  [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng.)
-  [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
-  [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
+  - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng.)
+  - [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
+  - [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -78,14 +78,14 @@ This is a solo project
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Getting Started
+## Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
 
-### Prerequisites
+### Prerequisites <a name="prerequisites"></a>
 In order to run this project you need:
   * A basic understanding of React, Redux and Git
-### Usage
+### Usage <a name="usage"></a>
 1. Clone this repo
 2. Run npm install
 ```
