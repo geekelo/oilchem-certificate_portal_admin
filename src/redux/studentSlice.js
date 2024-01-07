@@ -11,11 +11,7 @@ const initialState = {
 
 export const displayStudents = createAsyncThunk('user/display_students', async (token) => {
   try {
-<<<<<<< HEAD
     const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/students', {
-=======
-    const response = await fetch('https://oilchem-api.onrender.com/api/v1/students', {
->>>>>>> dev-deploy
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -39,11 +35,7 @@ export const displayStudent = createAsyncThunk(
   async (payload) => {
     const { studentId, token } = payload;
     try {
-<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/students/${studentId}`, {
-=======
-      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/students/${studentId}`, {
->>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -70,11 +62,7 @@ export const deleteStudent = createAsyncThunk(
 
     try {
       const response = await fetch(
-<<<<<<< HEAD
         `https://oilchem-api-prod.onrender.com/api/v1/students/${id}`,
-=======
-        `https://oilchem-api.onrender.com/api/v1/students/${id}`,
->>>>>>> dev-deploy
         {
           method: 'DELETE',
           headers: {
@@ -98,11 +86,7 @@ export const addStudent = createAsyncThunk(
   async (payload, dispatch) => {
     const { studentData, token } = payload;
     try {
-<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/students', {
-=======
-      const response = await fetch('https://oilchem-api.onrender.com/api/v1/students', {
->>>>>>> dev-deploy
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -129,11 +113,7 @@ export const editStudent = createAsyncThunk(
   async (payload, { dispatch }) => {
     const { studentId, studentData, token } = payload;
     try {
-<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/students/${studentId}`, {
-=======
-      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/students/${studentId}`, {
->>>>>>> dev-deploy
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',

@@ -13,11 +13,7 @@ export const displayPersonnel = createAsyncThunk(
   'user/display_personnel',
   async (token) => {
     try {
-<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels', {
-=======
-      const response = await fetch('https://oilchem-api.onrender.com/api/v1/trainingpersonnels', {
->>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -43,11 +39,7 @@ export const displaySinglePersonnel = createAsyncThunk(
     const { personnelId, token } = payload;
 
     try {
-<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels/${personnelId}`, {
-=======
-      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/trainingpersonnels/${personnelId}`, {
->>>>>>> dev-deploy
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -72,11 +64,7 @@ export const addPersonnel = createAsyncThunk(
   async (payload, dispatch) => {
     const { personnelData, token } = payload;
     try {
-<<<<<<< HEAD
       const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels', {
-=======
-      const response = await fetch('https://oilchem-api.onrender.com/api/v1/trainingpersonnels', {
->>>>>>> dev-deploy
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,11 +91,7 @@ export const editPersonnel = createAsyncThunk(
   async (payload, { dispatch }) => {
     const { personnelId, personnelData, token } = payload;
     try {
-<<<<<<< HEAD
       const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels/${personnelId}`, {
-=======
-      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/trainingpersonnels/${personnelId}`, {
->>>>>>> dev-deploy
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',
@@ -136,11 +120,7 @@ export const deletePersonnel = createAsyncThunk(
 
     try {
       const response = await fetch(
-<<<<<<< HEAD
         `https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels/${id}`,
-=======
-        `https://oilchem-api.onrender.com/api/v1/trainingpersonnels/${id}`,
->>>>>>> dev-deploy
         {
           method: 'DELETE',
           headers: {
