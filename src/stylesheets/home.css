@@ -1,0 +1,105 @@
+.statistics-cont {
+  display: flex;
+  font-family: "Lato", sans-serif;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 5px 5px 5px rgba(228, 228, 228, 0.438);
+  background: linear-gradient(67deg, #97d6a3, #94c894, #174217);
+  background-color: #fff;
+  background-size: 180% 180%;
+  animation: gradient-animation 5s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.total-sub-sect {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.total-each-sect {
+  width: 50%;
+}
+
+.statistics-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.view-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.batch-select-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.batch-edit {
+  font-size: 0.7rem;
+  padding-right: 1.5rem;
+  text-decoration: underline;
+  color: rgba(8, 74, 40, 0.473);
+}
+
+.batch-cont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.each-batch-sect {
+  background-color: #fff;
+  border-radius: 18px;
+}
+
+.each-batch-cont {
+  width: 47vh;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.batch-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgb(8, 74, 40);
+  margin-bottom: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.batch-date {
+  text-transform: uppercase;
+  display: flex;
+  font-size: 0.7rem;
+  color: rgba(8, 74, 40, 0.473);
+  font-weight: 800;
+  margin-bottom: -5px;
+  font-family: 'Lato', sans-serif;
+}

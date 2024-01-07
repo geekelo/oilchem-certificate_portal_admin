@@ -1,0 +1,44 @@
+.topbarSection {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 1px 2px 5px rgba(228, 228, 228, 0.438);
+}
+
+.logo {
+  width: 10%;
+  display: block;
+}
+
+.home-divider {
+  width: 80%;
+  margin-top: 8vh;
+  opacity: 0.1;
+  margin-right: 15%;
+  border-color: rgb(8, 74, 40);
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  background-color: #fff0;
+  border: none;
+}
+
+.menu-item span {
+  font-size: 0.8rem;
+}
+
+.menu-icon {
+  font-size: 3rem;
+}
