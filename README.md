@@ -33,6 +33,8 @@
 
 <!-- PROJECT DESCRIPTION -->
 
+![Screenshot from 2024-01-07 17-45-05](https://github.com/geekelo/oilchem-certificate_portal_admin/assets/102464578/08d35acd-1da6-4c6e-b775-7a4a122e24d1)
+
 <div align="center">
   <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
 </div>
