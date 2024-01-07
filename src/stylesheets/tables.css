@@ -122,7 +122,7 @@
   background-color: rgb(17, 57, 44);
   padding: 1rem;
   color: #fff;
-  font-family: "Montserrat", Arial;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.8rem;
   justify-content: flex-start;
   font-weight: bold;
@@ -134,7 +134,7 @@
   display: flex;
   width: 85%;
   padding: 1rem;
-  font-family: "Montserrat", Arial;
+  font-family: 'Montserrat', sans-serif;
   background-color: #fff;
   font-size: 0.8rem;
   text-transform: capitalize;

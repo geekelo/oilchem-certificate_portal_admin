@@ -20,9 +20,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -50,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .batch-select-cont {
@@ -83,10 +86,6 @@
   padding-bottom: 2rem;
 }
 
-.view-btn {
-  width: 100%;
-}
-
 .batch-name {
   font-size: 1.3rem;
   font-weight: 600;
@@ -103,5 +102,5 @@
   color: rgba(8, 74, 40, 0.473);
   font-weight: 800;
   margin-bottom: -5px;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
