@@ -47,7 +47,7 @@ This project comprises of -
 - [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-  - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng.)
+  - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng)
   - [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
   - [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
 
