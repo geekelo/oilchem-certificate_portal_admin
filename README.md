@@ -37,6 +37,7 @@
   <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
 </div>
 
+![alt text](<Screenshot from 2024-01-07 17-45-05.png>)
 The `CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the content management system for a certificate portal web application. It provides an admin interface and interacts with the Rails Backend API only app to display content and manage data. This CMS is functional, easy to use and navigate. Admins can create  students, certificates, trainning personnel etc.
 
 The aim of this project is to provide a effective  solution to enable the Oilchem Mud School digitally create, manage and verify certificates for their graduated students 📚
