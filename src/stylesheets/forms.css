@@ -38,9 +38,11 @@ label {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -80,7 +82,7 @@ select {
   position: fixed;
   top: 4vh;
   left: 10%;
-  background-color: #ffffff00;
+  background-color: #fff0;
   z-index: 2;
   border: none;
   font-size: 0;

@@ -3,17 +3,13 @@
 body {
   margin: 0;
   padding-bottom: 3rem;
-  font-family: "Montserrat", "Arial";
+  font-family: "Montserrat", Arial;
   background-color: #f1ffee;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #639c630f 10px
-    ),
-    repeating-linear-gradient(#f1ffee55, #f1ffee);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  background-image:
+  repeating-radial-gradient(
+    circle at 0 0,
+    transparent 0,
+  #639c630f 10px
+  ),
+  repeating-linear-gradient(#f1ffee55, #f1ffee);
 }
