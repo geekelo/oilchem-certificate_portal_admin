@@ -29,7 +29,7 @@ label {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(67deg,#d2ffda,#94c894,#174217);
+  background: linear-gradient(67deg, #d2ffda, #94c894, #174217);
   background-size: 180% 180%;
   animation: gradient-animation 2s ease infinite;
 }
