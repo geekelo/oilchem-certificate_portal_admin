@@ -1,5 +1,4 @@
 .statistics-cont {
-  background-color: #fff;
   display: flex;
   font-family: "Lato", sans-serif;
   flex-direction: column;
@@ -12,6 +11,7 @@
   padding-bottom: 2rem;
   box-shadow: 5px 5px 5px rgba(228, 228, 228, 0.438);
   background: linear-gradient(67deg, #97d6a3, #94c894, #174217);
+  background-color: #fff;
   background-size: 180% 180%;
   animation: gradient-animation 5s ease infinite;
 }
