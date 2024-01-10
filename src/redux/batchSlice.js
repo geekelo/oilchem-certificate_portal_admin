@@ -13,7 +13,7 @@ export const displayBatches = createAsyncThunk(
   'user/display_batches',
   async (token) => {
     try {
-      const response = await fetch('https://oilchem-api-pro.onrender.com/api/v1/batches', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/batches', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
