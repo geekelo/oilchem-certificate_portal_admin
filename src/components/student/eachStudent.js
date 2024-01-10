@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FaPen, FaPlus } from 'react-icons/fa';
 import '../../stylesheets/tables.css';
+import CopyButton from '../copybtn';
 
 function EachStudent({
   index,
@@ -43,7 +44,11 @@ function EachStudent({
           />
         </div>
         <p className="student-name">{eachStudent.name}</p>
-        <p className="student-number">{eachStudent.unique_number}</p>
+        <p className="student-number">
+          {eachStudent.unique_number}
+          &nbsp;
+          <CopyButton textToCopy={eachStudent.unique_number} />
+        </p>
         { !certificateExist
           ? (
             <NavLink className="student-action deleteBtn" to={`/addcertificate/${eachStudent.id}`}>

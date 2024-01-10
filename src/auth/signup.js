@@ -100,6 +100,11 @@ function Signup() {
           <br />
           Up
         </p>
+        <p className="form-title">
+          Sign-
+          <br />
+          Up
+        </p>
       </div>
     </div>
   );

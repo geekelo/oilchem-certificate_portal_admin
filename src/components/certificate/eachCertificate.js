@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FaPen } from 'react-icons/fa';
 import '../../stylesheets/tables.css';
+import CopyButton from '../copybtn';
 
 function EachCertificate({
   eachCertificate,
@@ -71,8 +72,9 @@ function EachCertificate({
               <sup>➹</sup>
             </NavLink>
           </div>
-          <div>
+          <div className="cert-number">
             <p><b>Certificate Number:</b></p>
+            <CopyButton textToCopy={studentNumber} />
             {studentNumber}
           </div>
           <div>

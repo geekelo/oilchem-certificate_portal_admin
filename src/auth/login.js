@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { loginUser } from '../redux/loginSlice';
 import '../stylesheets/forms.css';
 
@@ -58,10 +58,6 @@ function Login() {
           />
         </label>
         <button className="submitbtn" type="submit">LOGIN</button>
-        <p>
-          Don&apos;t have an account?&nbsp;
-          <NavLink to="/signup">Sign Up</NavLink>
-        </p>
       </form>
       <div className="form-title-sect">
         <p className="form-title">

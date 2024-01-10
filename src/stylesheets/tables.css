@@ -176,6 +176,11 @@
   padding-right: 1rem;
 }
 
+.cert-number,
+.student-number {
+  text-transform: lowercase;
+}
+
 .purpose {
   width: 14%;
   padding-right: 1rem;
