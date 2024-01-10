@@ -13,7 +13,7 @@ export const displayBatches = createAsyncThunk(
   'user/display_batches',
   async (token) => {
     try {
-      const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/batches', {
+      const response = await fetch('https://oilchem-api-pro.onrender.com/api/v1/batches', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const displayBatch = createAsyncThunk(
   async (payload) => {
     const { batchId, token } = payload;
     try {
-      const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/batches/${batchId}`, {
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/batches/${batchId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export const deleteBatch = createAsyncThunk(
 
     try {
       const response = await fetch(
-        `https://oilchem-api-prod.onrender.com/api/v1/batches/${id}`,
+        `https://oilchem-api.onrender.com/api/v1/batches/${id}`,
         {
           method: 'DELETE',
           headers: {
@@ -89,7 +89,7 @@ export const addBatch = createAsyncThunk(
   async (payload) => {
     const { batchData, token } = payload;
     try {
-      const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/batches', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/batches', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ export const editBatch = createAsyncThunk(
   async (payload) => {
     const { batchId, batchData, token } = payload;
     try {
-      const response = await fetch(`https://oilchem-api-prod.onrender.com/api/v1/batches/${batchId}`, {
+      const response = await fetch(`https://oilchem-api.onrender.com/api/v1/batches/${batchId}`, {
         method: 'PATCH', // Use PATCH for update/edit requests
         headers: {
           'Content-Type': 'application/json',
