@@ -72,10 +72,12 @@ function EachCertificate({
               <sup>➹</sup>
             </NavLink>
           </div>
-          <div className="cert-number">
+          <div>
             <p><b>Certificate Number:</b></p>
             <CopyButton textToCopy={studentNumber} />
-            {studentNumber}
+            <p className="cert-number">
+              {studentNumber}
+            </p>
           </div>
           <div>
             <p><b>Batch Name:</b></p>
