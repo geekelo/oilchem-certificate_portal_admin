@@ -170,7 +170,7 @@ function AddCertificate() {
         </label>
 
         <label htmlFor="training_instructor_id">
-          Training instructor:   
+          Training instructor:
           <select id="training_instructor_id" name="training_instructor_id" onChange={handleChange}>
             <option value="">Select...</option>
             {
