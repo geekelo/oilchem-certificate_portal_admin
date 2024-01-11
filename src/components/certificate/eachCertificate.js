@@ -107,7 +107,7 @@ function EachCertificate({
             {instructor[0].name || ''}
           </div>
           <div>
-            <p><b>Training Facilitator:</b></p>
+            <p><b>External Facilitator:</b></p>
             {facilitator[0].name || ''}
           </div>
         </div>
