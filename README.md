@@ -39,19 +39,20 @@
   <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
 </div>
 
-The `CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the content management system for a certificate portal web application. It provides an admin interface and interacts with the Rails Backend API only app to display content and manage data. This CMS is functional, easy to use and navigate. Admins can create  students, certificates, trainning personnel etc.
+The `CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the content management system for a certificate portal web application. It provides an admin interface and interacts with the Rails Backend API-only app to display content and manage data. This CMS is functional, easy to use, and navigate. Admins can create  students, certificates, training personnel etc.
 
-The aim of this project is to provide a effective  solution to enable the Oilchem Mud School digitally create, manage and verify certificates for their graduated students 📚
+This project aims to provide an effective  solution to enable the Oilchem Mud School to digitally create, manage, and verify certificates for their graduated students 📚
 
 This project comprises of -
-- [Rails Backend API only App](https://github.com/geekelo/oilchem-certificate_portal_api) - manages postgresql database and CRUD methods
-- [React CMS](https://github.com/geekelo/oilchem-certificate_portal_admin) - provides user interfaces to admins for effective cotent management
-- [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
+- [Rails Backend API only App](https://github.com/geekelo/oilchem-certificate_portal_api) - manages PostgreSQL database and CRUD methods
+- [React CMS](https://github.com/geekelo/oilchem-certificate_portal_admin) - provides user interfaces to admins for effective content management
+- [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This application is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
   - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng)
   - [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
   - [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
+  - [Video Presentation](https://youtu.be/4pFrIFyQq98)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -67,7 +68,7 @@ This project comprises of -
 
 - [x] **React-Based User Interface**
 - [x] **Modular Structure**
-- [x] **Create, read, update and delete features for certificates, students, personnel and batch**
+- [x] **Create, read, update, and delete features for certificates, students, personnel, and batch**
 - [x] **Navigation**
 
 
@@ -85,8 +86,8 @@ This is a solo project
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites <a name="prerequisites"></a>
-In order to run this project you need:
-  * A basic understanding of React, Redux and Git
+To run this project you need:
+  * A basic understanding of React, Redux, and Git
 ### Usage <a name="usage"></a>
 1. Clone this repo
 2. Run npm install
