@@ -120,7 +120,7 @@ function Certificates() {
     }
   }, [certificateData]);
 
-  if (certificateData.length > 0) {
+  if (displayCertificates.length > 0) {
     displayedCertificates.slice(0, itemsToShow);
     return (
       <div className="table-cont">

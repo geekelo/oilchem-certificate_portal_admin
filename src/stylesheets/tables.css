@@ -177,7 +177,7 @@
 }
 
 .cert-number,
-.student-number {
+.student-num {
   text-transform: lowercase;
 }
 

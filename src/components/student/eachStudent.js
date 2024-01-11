@@ -44,7 +44,7 @@ function EachStudent({
           />
         </div>
         <p className="student-name">{eachStudent.name}</p>
-        <p className="student-number">
+        <p className="student-num">
           {eachStudent.unique_number}
           &nbsp;
           <CopyButton textToCopy={eachStudent.unique_number} />
