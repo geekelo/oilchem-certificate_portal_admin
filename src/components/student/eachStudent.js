@@ -44,11 +44,13 @@ function EachStudent({
           />
         </div>
         <p className="student-name">{eachStudent.name}</p>
-        <p className="student-num">
-          {eachStudent.unique_number}
-          &nbsp;
+        <div className="student-number">
+          <span className="student-num">
+            {eachStudent.unique_number}
+            &nbsp;
+          </span>
           <CopyButton textToCopy={eachStudent.unique_number} />
-        </p>
+        </div>
         { !certificateExist
           ? (
             <NavLink className="student-action deleteBtn" to={`/addcertificate/${eachStudent.id}`}>
