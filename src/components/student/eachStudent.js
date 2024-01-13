@@ -50,7 +50,7 @@ function EachStudent({
             &nbsp;
           </span>
           <CopyButton textToCopy={eachStudent.unique_number} />
-        </p>
+        </div>
         { !certificateExist
           ? (
             <NavLink className="student-action deleteBtn" to={`/addcertificate/${eachStudent.id}`}>
